@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>[BRAND NAME] — Nosotros / About</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+
+/* ─── About Main ─── */
+.about-main { padding: 80px 5vw 100px; }
+
+.about-intro {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  margin-bottom: 100px;
+}
+.about-intro-img { position: relative; }
+.about-intro-img-main {
+  width: 100%; aspect-ratio: 3/4; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-strong);
+}
+.about-intro-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.about-intro-img-sm {
+  position: absolute; bottom: -20px; right: -20px;
+  width: 48%; aspect-ratio: 1; border-radius: 16px; overflow: hidden;
+  border: 5px solid white; box-shadow: var(--shadow-med);
+}
+.about-intro-img-sm img { width: 100%; height: 100%; object-fit: cover; }
+
+.about-intro-content {}
+.about-big-quote {
+  font-family: var(--display); font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 300; font-style: italic; color: var(--sky-500);
+  line-height: 1.4; margin: 24px 0;
+  border-left: 2px solid var(--sky-200); padding-left: 24px;
+}
+.about-body-text {
+  font-size: 0.92rem; font-weight: 300; color: var(--slate);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.about-sig {
+  font-family: var(--display); font-size: 1.5rem; font-weight: 500;
+  font-style: italic; color: var(--charcoal); margin-top: 24px;
+}
+.about-sig-role { font-size: 0.78rem; font-weight: 300; color: var(--muted); margin-top: 4px; letter-spacing: 0.06em; }
+
+/* Stats row */
+.about-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  background: var(--border); border-radius: var(--radius); overflow: hidden;
+  margin-bottom: 100px;
+}
+.about-stat-item {
+  background: var(--white); padding: 40px 28px; text-align: center;
+  transition: background var(--transition);
+}
+.about-stat-item:hover { background: var(--sky-50); }
+.stat-big {
+  font-family: var(--display); font-size: 3rem; font-weight: 500;
+  color: var(--sky-500); line-height: 1; margin-bottom: 8px;
+}
+.stat-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+
+/* Values */
+.about-values-header { text-align: center; margin-bottom: 52px; }
+.about-values-header .divider { margin: 16px auto; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 80px; }
+.value-card {
+  background: var(--sky-50); border: 1px solid var(--sky-100);
+  border-radius: var(--radius); padding: 36px 28px;
+  transition: transform var(--transition), background var(--transition);
+}
+.value-card:hover { transform: translateY(-4px); background: var(--sky-100); }
+.value-num {
+  font-family: var(--display); font-size: 3.5rem; font-weight: 300;
+  color: var(--sky-200); line-height: 1; margin-bottom: 14px;
+}
+.value-title { font-family: var(--display); font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-bottom: 10px; }
+.value-text { font-size: 0.84rem; font-weight: 300; color: var(--slate); line-height: 1.75; }
+
+/* Team */
+.team-section { padding: 0 5vw 100px; }
+.team-header { text-align: center; margin-bottom: 52px; }
+.team-header .divider { margin: 16px auto; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.team-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); }
+.team-photo {
+  aspect-ratio: 1; overflow: hidden;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.team-card:hover .team-photo img { transform: scale(1.05); }
+.team-info { padding: 24px; }
+.team-name { font-family: var(--display); font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
+.team-role { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sky-500); margin-bottom: 10px; }
+.team-bio { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .about-intro { grid-template-columns: 1fr; gap: 48px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">[BRAND NAME]<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a></li>
+    <li><a href="services.html"><span data-es>Servicios</span><span data-en>Services</span></a></li>
+    <li><a href="about.html" class="active"><span data-es>Nosotros</span><span data-en>About</span></a></li>
+    <li><a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a></li>
+    <li><a href="contact.html" class="nav-cta"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang-btn="es">ES</button>
+      <button class="lang-btn" data-lang-btn="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
+  <a href="services.html"><span data-es>Servicios</span><span data-en>Services</span></a>
+  <a href="about.html"><span data-es>Nosotros</span><span data-en>About</span></a>
+  <a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a>
+  <a href="contact.html"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  <div class="mobile-menu-lang">
+    <button class="active" data-lang-btn="es">ES</button>
+    <button data-lang-btn="en">EN</button>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <span><span data-es>Nosotros</span><span data-en>About</span></span>
+    </div>
+    <h1 class="page-hero-title">
+      <span data-es>Nuestra <em>Historia</em></span>
+      <span data-en>Our <em>Story</em></span>
+    </h1>
+  </div>
+</div>
+
+<!-- ABOUT MAIN -->
+<section class="about-main">
+
+  <!-- Intro -->
+  <div class="about-intro">
+    <div class="about-intro-img reveal">
+      <!-- PHOTO: About page main image -->
+      <div class="about-intro-img-main">
+        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=900&q=85&auto=format&fit=crop" alt="Our laundry atelier" loading="lazy"/>
+      </div>
+      <!-- PHOTO: About page small float image -->
+      <div class="about-intro-img-sm">
+        <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85&auto=format&fit=crop" alt="Folded laundry" loading="lazy"/>
+      </div>
+    </div>
+
+    <div class="about-intro-content reveal">
+      <div class="section-eyebrow">
+        <span data-es>Quiénes somos</span><span data-en>Who we are</span>
+      </div>
+      <h2 class="section-title">
+        <span data-es>Pasión por el <em>Cuidado Textil</em></span>
+        <span data-en>A Passion for <em>Fabric Care</em></span>
+      </h2>
+      <div class="divider"></div>
+      <blockquote class="about-big-quote">
+        <span data-es>"Cada prenda cuenta una historia — nosotros la hacemos hermosa."</span>
+        <span data-en>"Every garment tells a story — we make sure it's a beautiful one."</span>
+      </blockquote>
+      <!-- ✏️ ABOUT TEXT: Replace with your real story -->
+      <p class="about-body-text">
+        <span data-es>Fundados en el corazón del Eixample de Barcelona, nacimos de una simple pero poderosa convicción: que las mejores prendas merecen el mejor cuidado. Durante más de una década, los residentes y empresas más exigentes de Barcelona han confiado en nosotros para el cuidado de sus mejores prendas.</span>
+        <span data-en>Founded in the heart of Barcelona's Eixample district, we were born from a simple but powerful conviction: that the finest garments deserve the finest care. For over a decade, Barcelona's most discerning residents and businesses have trusted us with their most valued clothes.</span>
+      </p>
+      <p class="about-body-text">
+        <span data-es>Combinamos la artesanía europea de toda la vida con tecnología ecológica de vanguardia. Cada proceso ha sido cuidadosamente diseñado para preservar la calidad de tus prendas mientras minimizamos nuestro impacto medioambiental.</span>
+        <span data-en>We combine time-honoured European craftsmanship with cutting-edge eco-friendly technology. Every process has been carefully designed to preserve your garment's quality while minimising our environmental impact.</span>
+      </p>
+      <!-- ✏️ FOUNDER NAME AND TITLE -->
+      <div class="about-sig">[Founder Name]</div>
+      <div class="about-sig-role"><span data-es>Fundador & Director</span><span data-en>Founder & Director</span></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="about-stats reveal">
+    <!-- ✏️ STATS: Change numbers to your real ones -->
+    <div class="about-stat-item">
+      <div class="stat-big">12+</div>
+      <div class="stat-desc"><span data-es>Años en Barcelona</span><span data-en>Years in Barcelona</span></div>
+    </div>
+    <div class="about-stat-item">
+      <div class="stat-big">5k+</div>
+      <div class="stat-desc"><span data-es>Clientes satisfechos</span><span data-en>Happy clients</span></div>
+    </div>
+    <div class="about-stat-item">
+      <div class="stat-big">100%</div>
+      <div class="stat-desc"><span data-es>Procesos ecológicos</span><span data-en>Eco processes</span></div>
+    </div>
+    <div class="about-stat-item">
+      <div class="stat-big">24h</div>
+      <div class="stat-desc"><span data-es>Servicio express</span><span data-en>Express service</span></div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="about-values-header reveal">
+    <div class="section-eyebrow" style="justify-content:center;">
+      <span data-es>Lo que nos guía</span><span data-en>What guides us</span>
+    </div>
+    <h2 class="section-title">
+      <span data-es>Nuestros <em>Valores</em></span>
+      <span data-en>Our <em>Values</em></span>
+    </h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="values-grid">
+    <!-- ✏️ VALUES: Change title and description -->
+    <div class="value-card reveal">
+      <div class="value-num">01</div>
+      <div class="value-title"><span data-es>Sostenibilidad</span><span data-en>Sustainability</span></div>
+      <div class="value-text"><span data-es>Cada decisión que tomamos tiene en cuenta su impacto en el planeta. Desde los disolventes que usamos hasta el embalaje con el que entregamos tus prendas.</span><span data-en>Every decision we make considers its impact on the planet — from the solvents we use to the packaging we deliver your garments in.</span></div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-num">02</div>
+      <div class="value-title"><span data-es>Artesanía</span><span data-en>Craftsmanship</span></div>
+      <div class="value-text"><span data-es>Creemos que el cuidado de las prendas es un arte. Cada pieza que pasa por nuestras manos recibe la misma atención meticulosa al detalle.</span><span data-en>We believe garment care is an art. Every piece that passes through our hands receives the same meticulous attention to detail.</span></div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-num">03</div>
+      <div class="value-title"><span data-es>Confianza</span><span data-en>Trust</span></div>
+      <div class="value-text"><span data-es>Tus prendas más preciadas nos son confiadas. Nos tomamos esa responsabilidad en serio, con total transparencia en cada paso del proceso.</span><span data-en>Your most precious garments are entrusted to us. We take that responsibility seriously, with full transparency at every step of the process.</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-header reveal">
+    <div class="section-eyebrow" style="justify-content:center;">
+      <span data-es>Nuestro equipo</span><span data-en>Our team</span>
+    </div>
+    <h2 class="section-title">
+      <span data-es>Los <em>Expertos</em></span>
+      <span data-en>The <em>Experts</em></span>
+    </h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="team-grid">
+    <!-- ✏️ TEAM MEMBERS: Replace name, role, bio and photo for each person -->
+    <div class="team-card reveal">
+      <div class="team-photo">
+        <!-- PHOTO: Team member 1 -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85&auto=format&fit=crop&crop=face" alt="Team member" loading="lazy"/>
+      </div>
+      <div class="team-info">
+        <div class="team-name">[Name Surname]</div>
+        <div class="team-role"><span data-es>Fundador & Director</span><span data-en>Founder & Director</span></div>
+        <div class="team-bio"><span data-es>Más de 15 años de experiencia en el cuidado premium de prendas.</span><span data-en>Over 15 years of experience in premium garment care.</span></div>
+      </div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-photo">
+        <!-- PHOTO: Team member 2 -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85&auto=format&fit=crop&crop=face" alt="Team member" loading="lazy"/>
+      </div>
+      <div class="team-info">
+        <div class="team-name">[Name Surname]</div>
+        <div class="team-role"><span data-es>Especialista en Tintorería</span><span data-en>Dry Cleaning Specialist</span></div>
+        <div class="team-bio"><span data-es>Experta en tejidos delicados — seda, cachemira y lana.</span><span data-en>Expert in delicate fabrics — silk, cashmere and wool.</span></div>
+      </div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-photo">
+        <!-- PHOTO: Team member 3 -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85&auto=format&fit=crop&crop=face" alt="Team member" loading="lazy"/>
+      </div>
+      <div class="team-info">
+        <div class="team-name">[Name Surname]</div>
+        <div class="team-role"><span data-es>Maestro Planchador</span><span data-en>Master Presser</span></div>
+        <div class="team-bio"><span data-es>Especialista en planchado de trajes formales y camisas.</span><span data-en>Specialist in formal suit and shirt pressing.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">[BRAND NAME]<span>.</span></span>
+      <p class="footer-tagline"><span data-es>Lavandería y tintorería premium en Barcelona. De confianza desde 2012.</span><span data-en>Premium laundry and dry cleaning in Barcelona. Trusted since 2012.</span></p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://wa.me/34600000000" class="social-btn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4><span data-es>Servicios</span><span data-en>Services</span></h4><ul><li><a href="services.html"><span data-es>Lavado & Doblado</span><span data-en>Wash & Fold</span></a></li><li><a href="services.html"><span data-es>Tintorería Eco</span><span data-en>Eco Dry Cleaning</span></a></li><li><a href="services.html"><span data-es>Planchado & Vapor</span><span data-en>Iron & Steam</span></a></li><li><a href="services.html"><span data-es>Express</span><span data-en>Express</span></a></li></ul></div>
+    <div class="footer-col"><h4><span data-es>Empresa</span><span data-en>Company</span></h4><ul><li><a href="about.html"><span data-es>Nosotros</span><span data-en>About Us</span></a></li><li><a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a></li><li><a href="contact.html"><span data-es>Contacto</span><span data-en>Contact</span></a></li></ul></div>
+    <div class="footer-col"><h4><span data-es>Contacto</span><span data-en>Contact</span></h4><ul><li><a href="tel:+34600000000">+34 600 000 000</a></li><li><a href="mailto:hola@yourdomain.com">hola@yourdomain.com</a></li><li><a href="contact.html">Barcelona</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 [BRAND NAME]. <span data-es>Todos los derechos reservados.</span><span data-en>All rights reserved.</span></p>
+    <div class="footer-legal"><a href="#"><span data-es>Privacidad</span><span data-en>Privacy</span></a><a href="#"><span data-es>Cookies</span><span data-en>Cookies</span></a></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

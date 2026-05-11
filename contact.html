@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>[BRAND NAME] — Contacto / Contact</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+
+.contact-section { padding: 80px 5vw 100px; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+
+/* Form */
+.form-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 44px 40px;
+  box-shadow: var(--shadow-soft);
+}
+.form-title {
+  font-family: var(--display); font-size: 1.5rem; font-weight: 500;
+  color: var(--charcoal); margin-bottom: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--slate); margin-bottom: 7px;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%; padding: 12px 15px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-family: var(--body); font-size: 0.88rem; font-weight: 300;
+  color: var(--charcoal); background: var(--sky-50); outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--sky-400); background: white;
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.08);
+}
+.form-textarea { resize: none; height: 100px; }
+.form-select { appearance: none; cursor: pointer; }
+.form-submit {
+  width: 100%; padding: 15px; border-radius: 100px;
+  background: var(--sky-500); color: white; border: none;
+  font-family: var(--body); font-size: 0.86rem; font-weight: 500;
+  letter-spacing: 0.06em; cursor: pointer;
+  box-shadow: 0 6px 22px rgba(14,165,233,0.28);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  margin-top: 6px;
+}
+.form-submit:hover { background: var(--sky-600); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,165,233,0.38); }
+
+/* Info Side */
+.contact-info { display: flex; flex-direction: column; gap: 24px; }
+
+.whatsapp-cta {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 24px; border-radius: 14px;
+  background: #25D366; color: white;
+  font-size: 0.9rem; font-weight: 500;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.25);
+  transition: transform var(--transition), box-shadow var(--transition);
+  width: fit-content;
+}
+.whatsapp-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.35); }
+
+.info-block {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.info-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: var(--sky-50); border: 1px solid var(--sky-100);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sky-500);
+}
+.info-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.info-value {
+  font-size: 0.9rem; font-weight: 400; color: var(--charcoal); line-height: 1.6;
+}
+.info-value a { color: inherit; transition: color var(--transition); }
+.info-value a:hover { color: var(--sky-500); }
+
+/* Hours */
+.hours-card {
+  background: var(--sky-50); border: 1px solid var(--sky-100);
+  border-radius: 14px; padding: 20px 22px;
+}
+.hours-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+}
+.hours-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid rgba(14,165,233,0.08);
+  font-size: 0.84rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day { font-weight: 400; color: var(--slate); }
+.hours-time { font-weight: 500; color: var(--sky-500); }
+
+/* Map */
+.map-wrap {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: var(--shadow-soft); border: 1px solid var(--border);
+}
+.map-wrap iframe { display: block; }
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .form-card { padding: 28px 22px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">[BRAND NAME]<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a></li>
+    <li><a href="services.html"><span data-es>Servicios</span><span data-en>Services</span></a></li>
+    <li><a href="about.html"><span data-es>Nosotros</span><span data-en>About</span></a></li>
+    <li><a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a></li>
+    <li><a href="contact.html" class="active nav-cta"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang-btn="es">ES</button>
+      <button class="lang-btn" data-lang-btn="en">EN</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"><span data-es>Inicio</span><span data-en>Home</span></a>
+  <a href="services.html"><span data-es>Servicios</span><span data-en>Services</span></a>
+  <a href="about.html"><span data-es>Nosotros</span><span data-en>About</span></a>
+  <a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a>
+  <a href="contact.html"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  <div class="mobile-menu-lang">
+    <button class="active" data-lang-btn="es">ES</button>
+    <button data-lang-btn="en">EN</button>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <span><span data-es>Contacto</span><span data-en>Contact</span></span>
+    </div>
+    <h1 class="page-hero-title">
+      <span data-es><em>Contáctanos</em></span>
+      <span data-en><em>Contact Us</em></span>
+    </h1>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="form-card reveal">
+      <h2 class="form-title">
+        <span data-es>Envíanos un mensaje</span>
+        <span data-en>Send us a message</span>
+      </h2>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><span data-es>Nombre</span><span data-en>Name</span></label>
+            <input type="text" class="form-input" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="tu@email.com" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-es>Teléfono</span><span data-en>Phone</span></label>
+          <input type="tel" class="form-input" placeholder="+34 600 000 000"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-es>Servicio</span><span data-en>Service</span></label>
+          <select class="form-select">
+            <option value=""><span data-es>Seleccionar servicio</span><span data-en>Select service</span></option>
+            <option><span data-es>Lavado & Doblado</span><span data-en>Wash & Fold</span></option>
+            <option><span data-es>Tintorería Eco</span><span data-en>Eco Dry Cleaning</span></option>
+            <option><span data-es>Planchado & Vapor</span><span data-en>Iron & Steam</span></option>
+            <option><span data-es>Servicio Express</span><span data-en>Express Service</span></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-es>Mensaje</span><span data-en>Message</span></label>
+          <textarea class="form-textarea" placeholder="¿En qué podemos ayudarte?" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          <span data-es>Enviar mensaje →</span><span data-en>Send message →</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <div class="contact-info reveal">
+
+      <!-- ✏️ WHATSAPP NUMBER -->
+      <a href="https://wa.me/34600000000" class="whatsapp-cta" target="_blank">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        <span data-es>Chatear por WhatsApp</span><span data-en>Chat on WhatsApp</span>
+      </a>
+
+      <!-- ✏️ ADDRESS -->
+      <div class="info-block">
+        <div class="info-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <div class="info-label"><span data-es>Dirección</span><span data-en>Address</span></div>
+          <div class="info-value">
+            [Your Street Address]<br>
+            [Postal Code] Barcelona, España
+          </div>
+        </div>
+      </div>
+
+      <!-- ✏️ PHONE -->
+      <div class="info-block">
+        <div class="info-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.1 19.79 19.79 0 0 1 1.61 3.52 2 2 0 0 1 3.6 1.35h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div>
+          <div class="info-label"><span data-es>Teléfono</span><span data-en>Phone</span></div>
+          <div class="info-value"><a href="tel:+34600000000">+34 600 000 000</a></div>
+        </div>
+      </div>
+
+      <!-- ✏️ EMAIL -->
+      <div class="info-block">
+        <div class="info-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:hola@yourdomain.com">hola@yourdomain.com</a></div>
+        </div>
+      </div>
+
+      <!-- ✏️ BUSINESS HOURS: Update days and times -->
+      <div class="hours-card">
+        <div class="hours-title"><span data-es>Horario</span><span data-en>Business Hours</span></div>
+        <div class="hours-row">
+          <span class="hours-day"><span data-es>Lunes – Viernes</span><span data-en>Monday – Friday</span></span>
+          <span class="hours-time">8:00 – 20:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day"><span data-es>Sábado</span><span data-en>Saturday</span></span>
+          <span class="hours-time">9:00 – 18:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day"><span data-es>Domingo</span><span data-en>Sunday</span></span>
+          <span class="hours-time">10:00 – 15:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day"><span data-es>Express Drop-off</span><span data-en>Express Drop-off</span></span>
+          <span class="hours-time">24 / 7</span>
+        </div>
+      </div>
+
+      <!--
+        ✏️ GOOGLE MAP:
+        1. Go to maps.google.com → search your address
+        2. Click Share → Embed a map → Copy HTML
+        3. Replace the entire <iframe> below with the copied code
+      -->
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.0!2d2.1535!3d41.3948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f7c25e1c1f%3A0x0!2sBarcelona!5e0!3m2!1sen!2ses!4v1700000000000!5m2!1sen!2ses"
+          width="100%" height="220" style="border:0;" allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">[BRAND NAME]<span>.</span></span>
+      <p class="footer-tagline"><span data-es>Lavandería y tintorería premium en Barcelona. De confianza desde 2012.</span><span data-en>Premium laundry and dry cleaning in Barcelona. Trusted since 2012.</span></p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://wa.me/34600000000" class="social-btn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4><span data-es>Servicios</span><span data-en>Services</span></h4><ul><li><a href="services.html"><span data-es>Lavado & Doblado</span><span data-en>Wash & Fold</span></a></li><li><a href="services.html"><span data-es>Tintorería Eco</span><span data-en>Eco Dry Cleaning</span></a></li><li><a href="services.html"><span data-es>Planchado & Vapor</span><span data-en>Iron & Steam</span></a></li></ul></div>
+    <div class="footer-col"><h4><span data-es>Empresa</span><span data-en>Company</span></h4><ul><li><a href="about.html"><span data-es>Nosotros</span><span data-en>About Us</span></a></li><li><a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a></li><li><a href="contact.html"><span data-es>Contacto</span><span data-en>Contact</span></a></li></ul></div>
+    <div class="footer-col"><h4><span data-es>Contacto</span><span data-en>Contact</span></h4><ul><li><a href="tel:+34600000000">+34 600 000 000</a></li><li><a href="mailto:hola@yourdomain.com">hola@yourdomain.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 [BRAND NAME]. <span data-es>Todos los derechos reservados.</span><span data-en>All rights reserved.</span></p>
+    <div class="footer-legal"><a href="#"><span data-es>Privacidad</span><span data-en>Privacy</span></a><a href="#"><span data-es>Cookies</span><span data-en>Cookies</span></a></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.innerHTML = '<span data-es>Enviando…</span><span data-en>Sending…</span>';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '✓ <span data-es>¡Mensaje enviado!</span><span data-en>Message sent!</span>';
+      btn.style.background = '#10b981';
+      e.target.reset();
+      setTimeout(() => {
+        btn.innerHTML = '<span data-es>Enviar mensaje →</span><span data-en>Send message →</span>';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    }, 1200);
+  }
+</script>
+</body>
+</html>
