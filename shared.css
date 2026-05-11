@@ -328,7 +328,9 @@ body.lang-en span[data-es] { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 768px) {
-  .nav-links, .nav-right { display: none; }
+  .nav-links { display: none; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .lang-switcher { display: flex; }
   .nav-hamburger { display: flex; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
