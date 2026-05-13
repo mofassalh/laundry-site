@@ -237,7 +237,7 @@ body.lang-en span[data-es] { display: none; }
   font-weight: 400; line-height: 1.12; letter-spacing: -0.01em;
   color: var(--charcoal);
 }
-.section-title em { font-style: italic; color: var(--sky-500); }
+.section-title em { font-style: normal; color: var(--sky-500); }
 .section-desc {
   font-size: 0.93rem; font-weight: 300; color: var(--slate); line-height: 1.8;
 }
@@ -314,7 +314,7 @@ body.lang-en span[data-es] { display: none; }
   font-weight: 400; line-height: 1.08; letter-spacing: -0.01em;
   color: var(--charcoal);
 }
-.page-hero-title em { font-style: italic; color: var(--sky-500); }
+.page-hero-title em { font-style: normal; color: var(--sky-500); }
 .breadcrumb {
   display: flex; align-items: center; gap: 8px;
   font-size: 0.75rem; font-weight: 400; letter-spacing: 0.08em;
