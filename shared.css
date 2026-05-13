@@ -30,7 +30,7 @@
   --shadow-strong: 0 24px 64px rgba(14,165,233,0.16);
 
   /* ✏️ FONTS */
-  --display: 'Cormorant Garamond', serif;
+  --display: 'DM Sans', sans-serif;
   --body:    'DM Sans', sans-serif;
 
   /* Layout */
@@ -330,7 +330,7 @@ body.lang-en span[data-es] { display: none; }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-right { display: flex; align-items: center; gap: 10px; }
-  .lang-switcher { display: flex; }
+  .lang-switcher { display: none; }
   .nav-hamburger { display: flex; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
