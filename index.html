@@ -275,21 +275,33 @@
 .why-header .section-desc { max-width: 480px; margin: 0 auto; }
 .why-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; }
 .why-card {
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.72); border: 1px solid var(--glass-border);
-  border-radius: var(--radius); padding: 32px 20px; box-shadow: var(--shadow-soft);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  background: white;
+  border: 1.5px solid var(--sky-100);
+  border-radius: var(--radius); padding: 36px 24px;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  position: relative; overflow: hidden;
 }
-.why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-med); background: rgba(255,255,255,0.95); }
+.why-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sky-300), var(--sky-500));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.why-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-strong); border-color: var(--sky-300); background: var(--sky-50); }
+.why-card:hover::after { transform: scaleX(1); }
 .why-icon {
-  width: 56px; height: 56px; border-radius: 15px;
+  width: 64px; height: 64px; border-radius: 18px;
   background: linear-gradient(135deg, var(--sky-100), var(--sky-200));
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 18px; color: var(--sky-600); transition: transform var(--transition);
+  margin: 0 auto 20px; color: var(--sky-600);
+  transition: transform var(--transition), background var(--transition);
+  box-shadow: 0 4px 12px rgba(14,165,233,0.15);
 }
-.why-card:hover .why-icon { transform: scale(1.12) rotate(-5deg); }
-.why-title { font-family: var(--display); font-size: 1.1rem; font-weight: 500; color: var(--charcoal); margin-bottom: 8px; }
-.why-desc { font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.why-card:hover .why-icon { transform: scale(1.15) rotate(-6deg); background: linear-gradient(135deg, var(--sky-200), var(--sky-400)); color: white; }
+.why-title { font-family: var(--display); font-size: 1.15rem; font-weight: 500; color: var(--charcoal); margin-bottom: 10px; }
+.why-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
 
 /* ══════════════════════════════════════
    TESTIMONIALS — Auto scroll
@@ -573,10 +585,10 @@
 <section id="about-strip">
   <div class="about-img-wrap reveal">
     <div class="about-img-main">
-      <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=900&q=85&auto=format&fit=crop" alt="Our atelier" loading="lazy" id="parallaxImg"/>
+      <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=900&q=85&auto=format&fit=crop" alt="Our laundry" loading="lazy" id="parallaxImg"/>
     </div>
     <div class="about-img-float">
-      <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=600&q=85&auto=format&fit=crop" alt="Clean garments" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85&auto=format&fit=crop" alt="Clean laundry" loading="lazy"/>
     </div>
     <div class="about-badge">
       <div class="about-badge-icon">🌿</div>
