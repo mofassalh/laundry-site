@@ -585,10 +585,10 @@
 <section id="about-strip">
   <div class="about-img-wrap reveal">
     <div class="about-img-main">
-      <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=900&q=85&auto=format&fit=crop" alt="Our laundry" loading="lazy" id="parallaxImg"/>
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&auto=format&fit=crop" alt="Our laundry" loading="lazy" id="parallaxImg"/>
     </div>
     <div class="about-img-float">
-      <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&q=85&auto=format&fit=crop" alt="Clean laundry" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1521506618779-7f9e39ec0847?w=600&q=85&auto=format&fit=crop" alt="Clean laundry" loading="lazy"/>
     </div>
     <div class="about-badge">
       <div class="about-badge-icon">🌿</div>
@@ -753,14 +753,21 @@ setInterval(() => switchVideo((cur + 1) % videos.length), 8000);
 
 /* ── Parallax ── */
 const pImg = document.getElementById('parallaxImg');
-window.addEventListener('scroll', () => {
-  if (!pImg) return;
-  const rect = pImg.closest('.about-img-main').getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    const p = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-    pImg.style.transform = `translateY(${-p * 38}px)`;
-  }
-});
+const aboutSection = document.getElementById('about-strip');
+if (aboutSection) {
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = "1";
+        e.target.style.transform = "translateX(0)";
+      }
+    });
+  }, {threshold: 0.2});
+  const aboutImg = aboutSection.querySelector('.about-img-wrap');
+  const aboutContent = aboutSection.querySelector('.about-content');
+  if (aboutImg) { aboutImg.style.cssText = "opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease;"; aboutObserver.observe(aboutImg); }
+  if (aboutContent) { aboutContent.style.cssText = "opacity:0;transform:translateX(40px);transition:opacity 0.8s 0.2s ease,transform 0.8s 0.2s ease;"; aboutObserver.observe(aboutContent); }
+}
 
 /* ── Counter ── */
 const counts = document.querySelectorAll('.count');
