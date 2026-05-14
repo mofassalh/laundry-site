@@ -24,6 +24,7 @@
   font-family: var(--display); font-size: 2.8rem; font-weight: 400;
   color: white; letter-spacing: 0.06em;
   animation: loaderPulse 1.5s ease-in-out infinite;
+  text-align: center; width: 100%; padding: 0 20px;
 }
 .loader-logo span { color: var(--sky-400); }
 .loader-bar-wrap {
@@ -203,9 +204,16 @@
   backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 32px 26px;
 }
 .svc-front {
-  background: var(--white); border: 1px solid var(--border);
+  background: var(--sky-50); border: 1.5px solid var(--sky-200);
   display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
+  transition: background var(--transition), border-color var(--transition);
 }
+.svc-flip:hover .svc-front, .svc-flip:active .svc-front {
+  background: #0d1f3c; border-color: #0d1f3c;
+}
+.svc-flip:hover .svc-name, .svc-flip:active .svc-name { color: white; }
+.svc-flip:hover .svc-desc, .svc-flip:active .svc-desc { color: rgba(255,255,255,0.6); }
+.svc-flip:hover .svc-tag, .svc-flip:active .svc-tag { color: var(--sky-300); }
 .svc-back {
   background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
   transform: rotateY(180deg);
@@ -252,7 +260,7 @@
 .about-badge-text { font-size: 0.78rem; font-weight: 500; color: var(--charcoal); }
 .about-badge-sub { font-size: 0.66rem; color: var(--muted); }
 .about-quote {
-  font-family: var(--display); font-size: 1.6rem; font-weight: 300;
+  font-family: var(--display); font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 300;
   font-style: normal; color: var(--sky-500); line-height: 1.4;
   margin: 24px 0; border-left: 2px solid var(--sky-200); padding-left: 22px;
 }
@@ -474,6 +482,10 @@
   <a href="about.html"><span data-es>Nosotros</span><span data-en>About</span></a>
   <a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a>
   <a href="contact.html"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  <div class="mobile-lang-row">
+    <button class="active" data-lang-btn="es">ES</button>
+    <button data-lang-btn="en">EN</button>
+  </div>
 </div>
 
 <!-- ══ HERO ══ -->

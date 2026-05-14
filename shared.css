@@ -74,47 +74,45 @@ body.lang-en span[data-es] { display: none; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 18px 5vw;
   display: flex; align-items: center; justify-content: space-between;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(255,255,255,0.88);
-  border-bottom: 1px solid var(--glass-border);
+  background: #0d1f3c;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: padding var(--transition), box-shadow var(--transition);
 }
 #navbar.scrolled {
   padding: 12px 5vw;
-  box-shadow: 0 4px 24px rgba(14,165,233,0.08);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 /* ✏️ BRAND NAME: Change "BRAND NAME" text in each HTML file */
 .nav-logo {
   font-family: var(--display);
   font-size: 1.8rem; font-weight: 500; letter-spacing: 0.04em;
-  color: var(--charcoal);
+  color: white;
 }
-.nav-logo span { color: var(--sky-500); }
+.nav-logo span { display: none; }
 
 .nav-links {
   display: flex; gap: 2rem; list-style: none; align-items: center;
 }
 .nav-links a {
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--slate);
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
   transition: color var(--transition);
 }
-.nav-links a:hover, .nav-links a.active { color: var(--sky-500); }
+.nav-links a:hover, .nav-links a.active { color: var(--sky-300); }
 
 .nav-right { display: flex; align-items: center; gap: 16px; }
 
 /* Language switcher */
 .lang-switcher {
   display: flex; align-items: center;
-  background: var(--sky-50); border: 1px solid var(--sky-200);
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
   border-radius: 100px; padding: 3px; gap: 2px;
 }
 .lang-btn {
   font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
   padding: 5px 11px; border-radius: 100px; border: none;
-  background: transparent; cursor: pointer; color: var(--muted);
+  background: transparent; cursor: pointer; color: rgba(255,255,255,0.6);
   transition: background var(--transition), color var(--transition);
 }
 .lang-btn.active {
@@ -137,7 +135,7 @@ body.lang-en span[data-es] { display: none; }
 }
 .nav-hamburger span {
   display: block; width: 22px; height: 2px;
-  background: var(--charcoal); border-radius: 2px;
+  background: white; border-radius: 2px;
   transition: var(--transition);
 }
 
@@ -158,16 +156,16 @@ body.lang-en span[data-es] { display: none; }
   transition: color var(--transition);
 }
 .mobile-menu a:hover { color: var(--sky-500); }
-.mobile-menu-lang {
+.mobile-lang-row {
   display: flex; gap: 12px; margin-top: 28px;
 }
-.mobile-menu-lang button {
+.mobile-lang-row button {
   font-size: 0.8rem; font-weight: 600; padding: 8px 20px;
   border-radius: 100px; border: 1.5px solid var(--sky-200);
   background: transparent; cursor: pointer; color: var(--slate);
   transition: var(--transition);
 }
-.mobile-menu-lang button.active {
+.mobile-lang-row button.active {
   background: var(--sky-500); color: white; border-color: var(--sky-500);
 }
 
