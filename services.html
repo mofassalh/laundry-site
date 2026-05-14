@@ -9,57 +9,7 @@
 <style>
 
 
-/* ── Services Hero ── */
-.services-hero {
-  min-height: 320px; margin-top: 70px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  position: relative; overflow: hidden;
-}
-/* Image LEFT */
-.services-hero-slides {
-  position: relative; overflow: hidden; min-height: 320px;
-}
-.hero-slide {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; transition: opacity 1.2s ease;
-}
-.hero-slide.active { opacity: 1; }
-.slide-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, transparent 60%, rgba(240,248,255,0.95) 100%);
-  z-index: 1;
-}
-.slide-dots {
-  position: absolute; bottom: 20px; left: 20px; z-index: 2;
-  display: flex; gap: 6px;
-}
-.slide-dot {
-  width: 6px; height: 6px; border-radius: 100px;
-  background: rgba(255,255,255,0.6); cursor: pointer;
-  transition: width 0.3s, background 0.3s;
-}
-.slide-dot.active { width: 20px; background: white; }
-/* Text RIGHT */
-.services-hero-content {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 60px 5vw 60px 4vw;
-  background: linear-gradient(135deg, var(--sky-50) 0%, var(--white) 100%);
-  position: relative; z-index: 2;
-  animation: fadeInRight 0.8s ease both;
-}
-.services-hero-title {
-  font-family: var(--display);
-  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
-  font-weight: 400; line-height: 1.1; color: var(--charcoal);
-  margin: 16px 0 20px;
-}
-.services-hero-desc {
-  font-size: 0.93rem; font-weight: 300; color: var(--slate);
-  line-height: 1.75; max-width: 380px;
-}
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(30px); }
+
   to   { opacity: 1; transform: translateX(0); }
 }
 
@@ -341,37 +291,17 @@
   </div>
 </div>
 
-<!-- PAGE HERO WITH SLIDESHOW -->
-<div class="services-hero">
-  <!-- Slideshow right side -->
-  <div class="services-hero-slides" id="heroSlides">
-    <img class="hero-slide active" src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=900&q=85&auto=format&fit=crop" alt="Laundry 1"/>
-    <img class="hero-slide" src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=900&q=85&auto=format&fit=crop" alt="Laundry 2"/>
-    <img class="hero-slide" src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&auto=format&fit=crop" alt="Laundry 3"/>
-    <div class="slide-overlay"></div>
-    <div class="slide-dots" id="slideDots">
-      <span class="slide-dot active" onclick="goSlide(0)"></span>
-      <span class="slide-dot" onclick="goSlide(1)"></span>
-      <span class="slide-dot" onclick="goSlide(2)"></span>
-    </div>
-  </div>
-  <!-- Right content -->
-  <div class="services-hero-content">
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
     <div class="breadcrumb">
       <a href="index.html">Home</a><span>/</span>
       <span><span data-es>Servicios</span><span data-en>Services</span></span>
     </div>
-    <h1 class="services-hero-title">
+    <h1 class="page-hero-title">
       <span data-es>Nuestros Servicios</span>
       <span data-en>Our Services</span>
     </h1>
-    <p class="services-hero-desc">
-      <span data-es>Cuidado profesional para cada prenda. Desde el lavado diario hasta la tintorería de lujo.</span>
-      <span data-en>Professional care for every garment. From daily washing to luxury dry cleaning.</span>
-    </p>
-    <a href="contact.html" class="btn-primary" style="margin-top:24px;display:inline-flex;">
-      <span data-es>Reservar ahora</span><span data-en>Book now</span>
-    </a>
   </div>
 </div>
 
@@ -614,21 +544,7 @@
 
 <script src="shared.js"></script>
 
-<script>
-// Hero slideshow
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.slide-dot');
-let cur = 0;
 
-function goSlide(idx) {
-  slides[cur].classList.remove('active');
-  dots[cur].classList.remove('active');
-  cur = idx;
-  slides[cur].classList.add('active');
-  dots[cur].classList.add('active');
-}
-setInterval(() => goSlide((cur + 1) % slides.length), 4000);
-</script>
 
 </body>
 </html>
