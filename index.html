@@ -253,7 +253,7 @@
 .about-badge-sub { font-size: 0.66rem; color: var(--muted); }
 .about-quote {
   font-family: var(--display); font-size: 1.6rem; font-weight: 300;
-  font-style: italic; color: var(--sky-500); line-height: 1.4;
+  font-style: normal; color: var(--sky-500); line-height: 1.4;
   margin: 24px 0; border-left: 2px solid var(--sky-200); padding-left: 22px;
 }
 .about-text { font-size: 0.91rem; font-weight: 300; color: var(--slate); line-height: 1.85; margin-bottom: 14px; }
@@ -372,6 +372,16 @@
 .cta-title em { font-style: italic; opacity: 0.85; }
 .cta-sub { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.72); }
 .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Quote word animation */
+.about-quote .q-word {
+  display: inline-block;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.about-quote .q-word.visible {
+  opacity: 1; transform: translateY(0);
+}
 
 /* ══════════════════════════════════════
    KEYFRAMES
@@ -577,7 +587,7 @@
     <div class="section-eyebrow"><span data-es>Nuestra historia</span><span data-en>Our story</span></div>
     <h2 class="section-title"><span data-es>Más allá de la <em>Limpieza</em></span><span data-en>Beyond <em>Clean</em></span></h2>
     <div class="divider"></div>
-    <blockquote class="about-quote">
+    <blockquote class="about-quote" id="aboutQuote">
       <span data-es>"Cada prenda cuenta una historia — nosotros la hacemos hermosa."</span>
       <span data-en>"Every garment tells a story — we make sure it's a beautiful one."</span>
     </blockquote>
@@ -755,6 +765,24 @@ new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 }).observe
 ? (() => { const ob = new IntersectionObserver((entries) => { entries.forEach(e => { if(!e.isIntersecting) return; const el=e.target,target=+el.dataset.target; let n=0,step=target/(1800/16); const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=target>=1000?Math.floor(n).toLocaleString():Math.floor(n);},16); ob.unobserve(el);}); },{threshold:0.5}); counts.forEach(c=>ob.observe(c)); })() : null;
+
+/* ── Quote word animation ── */
+const quoteEl = document.getElementById('aboutQuote');
+if (quoteEl) {
+  // Wrap each word in span
+  quoteEl.querySelectorAll('span').forEach(span => {
+    span.innerHTML = span.textContent.split(' ').map((w,i) =>
+      `<span class="q-word" style="transition-delay:${i*80}ms">${w}</span>`
+    ).join(' ');
+  });
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.q-word').forEach(w => w.classList.add('visible'));
+      }
+    });
+  }, {threshold: 0.3}).observe(quoteEl);
+}
 
 /* ── Page transition ── */
 const pt = document.getElementById('page-transition');
