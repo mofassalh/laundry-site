@@ -337,3 +337,14 @@ body.lang-en span[data-es] { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── Mobile center fixes ── */
+@media (max-width: 768px) {
+  .page-hero { text-align: center; }
+  .breadcrumb { justify-content: center; }
+  .page-hero-title { text-align: center; }
+  .section-eyebrow { justify-content: center; }
+  .section-title { text-align: center; }
+  .section-desc { text-align: center; }
+  .divider { margin-left: auto; margin-right: auto; }
+}
