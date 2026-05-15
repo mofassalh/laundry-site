@@ -179,10 +179,8 @@
 .price-card.featured .price-cta:hover { background: var(--sky-400); }
 
 
-/* ── New Pricing Style ── */
-.price-category {
-  margin-bottom: 56px;
-}
+/* ── Pricing Style Option A ── */
+.price-category { margin-bottom: 56px; }
 .price-cat-title {
   display: flex; align-items: center; gap: 10px;
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
@@ -192,55 +190,52 @@
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
 }
 .price-tile {
-  background: var(--white); border: 1.5px solid var(--border);
-  border-radius: 20px; padding: 32px 24px; text-align: center;
+  background: var(--white);
+  border: 1.5px solid var(--sky-200);
+  border-radius: 20px; padding: 28px 20px; text-align: center;
   position: relative; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(14,165,233,0.08);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  cursor: default;
 }
-.price-tile::before {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--sky-300), var(--sky-500));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform var(--transition);
+.price-tile:hover, .price-tile:active {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(14,165,233,0.18);
+  border-color: var(--sky-400);
 }
-.price-tile:hover { transform: translateY(-6px); box-shadow: var(--shadow-med); border-color: var(--sky-300); }
-.price-tile:hover::before { transform: scaleX(1); }
 .price-tile.featured {
-  background: var(--charcoal); border-color: var(--charcoal);
-  transform: scale(1.04);
+  border: 2px solid var(--sky-500);
+  box-shadow: 0 8px 32px rgba(14,165,233,0.2);
 }
-.price-tile.featured:hover { transform: scale(1.04) translateY(-6px); }
-.price-tile.featured::before { background: linear-gradient(90deg, var(--sky-400), var(--sky-300)); }
+.price-tile.featured:hover {
+  box-shadow: 0 16px 48px rgba(14,165,233,0.28);
+  transform: translateY(-6px);
+}
 .price-tile-badge {
-  position: absolute; top: 14px; right: 14px;
-  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+  position: absolute; top: 12px; right: 12px;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
   background: var(--sky-500); color: white;
 }
+.price-divider-line {
+  height: 1px; background: var(--sky-100); margin: 14px 0;
+}
 .price-tile-size {
-  font-family: var(--display); font-size: 2.8rem; font-weight: 500;
-  color: var(--sky-500); line-height: 1; margin-bottom: 6px;
+  font-family: var(--display); font-size: 2.6rem; font-weight: 500;
+  color: var(--sky-500); line-height: 1; margin-bottom: 4px;
 }
-.price-tile.featured .price-tile-size { color: var(--sky-300); }
 .price-tile-desc {
-  font-size: 0.78rem; font-weight: 300; color: var(--muted); margin-bottom: 20px;
+  font-size: 0.75rem; font-weight: 300; color: var(--muted); margin-bottom: 0;
 }
-.price-tile.featured .price-tile-desc { color: rgba(255,255,255,0.45); }
 .price-tile-amount {
-  font-family: var(--display); font-size: 3.2rem; font-weight: 400;
-  color: var(--charcoal); line-height: 1; margin-bottom: 8px;
+  font-family: var(--display); font-size: 2.8rem; font-weight: 400;
+  color: var(--charcoal); line-height: 1; margin-bottom: 6px;
 }
-.price-tile.featured .price-tile-amount { color: white; }
 .price-tile-note {
-  font-size: 0.72rem; font-weight: 300; color: var(--muted);
+  font-size: 0.7rem; font-weight: 300; color: var(--muted);
 }
-.price-tile.featured .price-tile-note { color: rgba(255,255,255,0.35); }
 
 @media (max-width: 768px) {
   .price-cards-row { grid-template-columns: repeat(2, 1fr); }
-  .price-tile.featured { transform: scale(1); }
 }
 
 .pricing-note {
@@ -439,6 +434,7 @@
       <div class="price-tile reveal">
         <div class="price-tile-size">S</div>
         <div class="price-tile-desc"><span data-es>Pequeña</span><span data-en>Small</span></div>
+        <div class="price-divider-line"></div>
         <div class="price-tile-amount">€5</div>
         <div class="price-tile-note"><span data-es>Detergente incluido</span><span data-en>Detergent included</span></div>
       </div>
@@ -446,18 +442,21 @@
         <div class="price-tile-badge"><span data-es>Popular</span><span data-en>Popular</span></div>
         <div class="price-tile-size">M</div>
         <div class="price-tile-desc"><span data-es>Mediana</span><span data-en>Medium</span></div>
+        <div class="price-divider-line"></div>
         <div class="price-tile-amount">€6</div>
         <div class="price-tile-note"><span data-es>Detergente incluido</span><span data-en>Detergent included</span></div>
       </div>
       <div class="price-tile reveal">
         <div class="price-tile-size">L</div>
         <div class="price-tile-desc"><span data-es>Grande</span><span data-en>Large</span></div>
+        <div class="price-divider-line"></div>
         <div class="price-tile-amount">€7</div>
         <div class="price-tile-note"><span data-es>Detergente incluido</span><span data-en>Detergent included</span></div>
       </div>
       <div class="price-tile reveal">
         <div class="price-tile-size">XL</div>
         <div class="price-tile-desc"><span data-es>Extra grande</span><span data-en>Extra large</span></div>
+        <div class="price-divider-line"></div>
         <div class="price-tile-amount">€9</div>
         <div class="price-tile-note"><span data-es>Detergente incluido</span><span data-en>Detergent included</span></div>
       </div>
