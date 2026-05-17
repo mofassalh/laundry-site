@@ -8,12 +8,76 @@
 <link rel="stylesheet" href="shared.css"/>
 <style>
 
+
+/* ── USP Strip ── */
+#usp-strip { padding: 60px 5vw; background: var(--sky-50); }
+.usp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.usp-card {
+  background: var(--white); border: 1.5px solid var(--sky-200);
+  border-radius: var(--radius); padding: 32px 20px; text-align: center;
+  box-shadow: 0 4px 20px rgba(14,165,233,0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.usp-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(14,165,233,0.15); }
+.usp-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--charcoal); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  transition: transform var(--transition);
+}
+.usp-card:hover .usp-icon { transform: scale(1.1) rotate(-5deg); }
+.usp-num { font-family: var(--display); font-size: 2.4rem; font-weight: 500; color: var(--charcoal); line-height: 1; }
+.usp-label { font-size: 0.78rem; font-weight: 300; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+/* ── Real Services Grid ── */
+.real-services-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 14px;
+}
+.real-svc-item {
+  background: var(--white); border: 1.5px solid var(--sky-200);
+  border-radius: var(--radius-sm); padding: 18px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.real-svc-item:hover { transform: translateY(-3px); border-color: var(--sky-400); }
+.real-svc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky-400); flex-shrink: 0; margin-top: 5px; }
+.real-svc-name { font-size: 0.88rem; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
+.real-svc-tag { font-size: 0.7rem; font-weight: 500; color: var(--sky-500); background: var(--sky-50); padding: 2px 8px; border-radius: 100px; display: inline-block; }
+
+/* ── How It Works ── */
+#how-it-works { padding: 80px 5vw; background: var(--sky-50); }
+.steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.step-card {
+  background: var(--white); border: 1.5px solid var(--sky-200);
+  border-radius: var(--radius); padding: 32px 20px; text-align: center;
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.step-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(14,165,233,0.12); }
+.step-num {
+  font-family: var(--display); font-size: 3rem; font-weight: 500;
+  color: var(--sky-200); line-height: 1; margin-bottom: 12px;
+}
+.step-icon { color: var(--sky-500); display: flex; justify-content: center; margin-bottom: 14px; }
+.step-title { font-family: var(--display); font-size: 1.1rem; font-weight: 500; color: var(--charcoal); margin-bottom: 8px; }
+.step-sub { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .usp-grid { grid-template-columns: repeat(2,1fr); }
+  .real-services-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 560px) {
+  .usp-grid { grid-template-columns: repeat(2,1fr); }
+  .real-services-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* ══════════════════════════════════════
    LOADING SCREEN
 ══════════════════════════════════════ */
 #loader {
   position: fixed; inset: 0; z-index: 9999;
-  background: var(--charcoal);
+  background: #0d1f3c;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 20px;
   transition: opacity 0.6s ease, visibility 0.6s ease;
@@ -47,7 +111,7 @@
 ══════════════════════════════════════ */
 #page-transition {
   position: fixed; inset: 0; z-index: 8000;
-  background: var(--charcoal);
+  background: #0d1f3c;
   transform: translateY(100%);
   transition: transform 0.5s cubic-bezier(0.76,0,0.24,1);
   pointer-events: none;
@@ -367,13 +431,13 @@
 /* ══════════════════════════════════════
    STATS COUNTER
 ══════════════════════════════════════ */
-#stats-counter { background: var(--charcoal); padding: 80px 5vw; }
+#stats-counter { background: #0d1f3c; padding: 80px 5vw; }
 .stats-grid {
   display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
   background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden;
 }
 .counter-item {
-  background: var(--charcoal); padding: 48px 32px; text-align: center;
+  background: #0d1f3c; padding: 48px 32px; text-align: center;
   transition: background var(--transition);
 }
 .counter-item:hover { background: rgba(14,165,233,0.08); }
@@ -529,15 +593,15 @@
     </div>
     <h1 class="hero-title" id="heroTitle">
       <span data-es>
-        <span class="word">Cuidado</span>&nbsp;<span class="word"><em>Excepcional</em></span>&nbsp;<span class="word">para</span>&nbsp;<span class="word">tu</span>&nbsp;<span class="word">Ropa</span>
+        <span class="word">Tu ropa</span>&nbsp;<span class="word">lista</span>&nbsp;<span class="word">en</span>&nbsp;<span class="word"><em>30 minutos</em></span>
       </span>
       <span data-en>
-        <span class="word">Exceptional</span>&nbsp;<span class="word"><em>Care</em></span>&nbsp;<span class="word">for</span>&nbsp;<span class="word">Your</span>&nbsp;<span class="word">Clothes</span>
+        <span class="word">Your laundry</span>&nbsp;<span class="word">ready</span>&nbsp;<span class="word">in</span>&nbsp;<span class="word"><em>30 minutes</em></span>
       </span>
     </h1>
     <p class="hero-desc">
-      <span data-es>Autoservicio · Bugaderia Molino — lavandería profesional en el corazón de Barcelona.</span>
-      <span data-en>Autoservicio · Bugaderia Molino — professional laundry in the heart of Barcelona.</span>
+      <span data-es>Lavandería autoservicio en Barcelona · Detergente incluido · Abierto 365 días · Pago con tarjeta o efectivo</span>
+      <span data-en>Self-service laundry in Barcelona · Detergent included · Open 365 days · Card or cash payment</span>
     </p>
     <div class="hero-btns">
       <a href="contact.html" class="btn-primary">
@@ -553,9 +617,9 @@
   </div>
 
   <div class="hero-stats">
-    <div class="stat-row"><span class="stat-num">12+</span><span class="stat-label"><span data-es>Años</span><span data-en>Years</span></span></div>
-    <div class="stat-row"><span class="stat-num">5k+</span><span class="stat-label"><span data-es>Clientes</span><span data-en>Clients</span></span></div>
-    <div class="stat-row"><span class="stat-num">100%</span><span class="stat-label">Eco</span></div>
+    <div class="stat-row"><span class="stat-num">30</span><span class="stat-label"><span data-es>min lista</span><span data-en>min ready</span></span></div>
+    <div class="stat-row"><span class="stat-num">365</span><span class="stat-label"><span data-es>días abierto</span><span data-en>days open</span></span></div>
+    <div class="stat-row"><span class="stat-num">4.9</span><span class="stat-label">⭐ Google</span></div>
   </div>
 
   <div class="hero-scroll">
@@ -564,32 +628,100 @@
   </div>
 </section>
 
-<!-- ══ SERVICES — 3D Flip ══ -->
+<!-- ══ USP STRIP ══ -->
+<section id="usp-strip">
+  <div class="usp-grid reveal">
+    <div class="usp-card">
+      <div class="usp-icon">
+        <svg width="28" height="28" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </div>
+      <div class="usp-num">30</div>
+      <div class="usp-label"><span data-es>minutos y lista</span><span data-en>minutes ready</span></div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">
+        <svg width="28" height="28" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <div class="usp-num">365</div>
+      <div class="usp-label"><span data-es>días · 9h–22h</span><span data-en>days · 9am–10pm</span></div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">
+        <svg width="28" height="28" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <div class="usp-num" style="font-size:1.2rem;line-height:1.2;">Card<br>+ Cash</div>
+      <div class="usp-label"><span data-es>pago fácil</span><span data-en>easy payment</span></div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-icon">
+        <svg width="28" height="28" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </div>
+      <div class="usp-num" style="font-size:1rem;line-height:1.3;">Auto<br>Dosing</div>
+      <div class="usp-label"><span data-es>detergente incluido</span><span data-en>detergent included</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REAL SERVICES ══ -->
 <section id="services-strip">
   <div class="strip-header reveal">
     <div>
-      <div class="section-eyebrow"><span data-es>Lo que ofrecemos</span><span data-en>What we offer</span></div>
-      <h2 class="section-title"><span data-es>Nuestros <em>Servicios</em></span><span data-en>Our <em>Services</em></span></h2>
+      <div class="section-eyebrow"><span data-es>Lo que lavamos</span><span data-en>What we wash</span></div>
+      <h2 class="section-title"><span data-es>Servicios para <em>todo</em></span><span data-en>Services for <em>everything</em></span></h2>
     </div>
-    <a href="services.html" class="strip-link"><span data-es>Ver todos</span><span data-en>View all</span> →</a>
+    <a href="services.html" class="strip-link"><span data-es>Ver precios</span><span data-en>View prices</span> →</a>
   </div>
-  <div class="services-row">
-    <div class="svc-flip reveal"><div class="svc-flip-inner">
-      <div class="svc-front"><div class="svc-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12Q10 8 12 12Q14 16 16 12"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></div><div class="svc-name"><span data-es>Lavado & Doblado</span><span data-en>Wash & Fold</span></div><div class="svc-desc"><span data-es>Lavado profesional con detergentes premium.</span><span data-en>Professional wash with premium detergents.</span></div><div class="svc-tag"><span data-es>Desde €4.50/kg</span><span data-en>From €4.50/kg</span></div></div>
-      <div class="svc-back"><div class="svc-back-icon">🫧</div><div class="svc-back-title"><span data-es>Lavado & Doblado</span><span data-en>Wash & Fold</span></div><div class="svc-back-text"><span data-es>Clasificación por color, lavado a temperatura óptima, secado y doblado. Entrega en 48h.</span><span data-en>Sorted by colour, washed at optimal temp, dried and folded. 48h delivery.</span></div><div class="svc-back-cta"><span data-es>Contactar →</span><span data-en>Contact →</span></div></div>
-    </div></div>
-    <div class="svc-flip reveal"><div class="svc-flip-inner">
-      <div class="svc-front"><div class="svc-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L4 10Q2 13 4 16L8 20Q11 23 14 21L20 15Q23 12 21 9Z"/><path d="M12 8Q15 11 12 14Q9 11 12 8"/></svg></div><div class="svc-name"><span data-es>Tintorería Eco</span><span data-en>Eco Dry Clean</span></div><div class="svc-desc"><span data-es>Disolventes ecológicos para prendas delicadas.</span><span data-en>Eco solvents for your delicate garments.</span></div><div class="svc-tag"><span data-es>Tejidos delicados</span><span data-en>Delicate fabrics</span></div></div>
-      <div class="svc-back"><div class="svc-back-icon">🌿</div><div class="svc-back-title"><span data-es>Tintorería Eco</span><span data-en>Eco Dry Clean</span></div><div class="svc-back-text"><span data-es>Greenearth® certificado. Seda, cachemira, lana y lino tratados con máximo cuidado.</span><span data-en>Greenearth® certified. Silk, cashmere, wool and linen with maximum care.</span></div><div class="svc-back-cta"><span data-es>Contactar →</span><span data-en>Contact →</span></div></div>
-    </div></div>
-    <div class="svc-flip reveal"><div class="svc-flip-inner">
-      <div class="svc-front"><div class="svc-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 18Q4 16 8 16L18 16Q22 16 22 12L22 10L8 10Q4 10 4 14Z"/><path d="M4 18L4 20"/><path d="M11 6Q11 4 13 4M14 6Q14 3 16 3M8 6Q8 5 9 5"/></svg></div><div class="svc-name"><span data-es>Planchado & Vapor</span><span data-en>Iron & Steam</span></div><div class="svc-desc"><span data-es>Resultados impecables con prensas de vapor.</span><span data-en>Impeccable results with steam presses.</span></div><div class="svc-tag"><span data-es>Esp. camisas</span><span data-en>Shirt specialist</span></div></div>
-      <div class="svc-back"><div class="svc-back-icon">✨</div><div class="svc-back-title"><span data-es>Planchado & Vapor</span><span data-en>Iron & Steam</span></div><div class="svc-back-text"><span data-es>Prensas industriales. Trajes, camisas y vestidos perfectamente planchados.</span><span data-en>Industrial presses. Suits, shirts and dresses perfectly pressed.</span></div><div class="svc-back-cta"><span data-es>Contactar →</span><span data-en>Contact →</span></div></div>
-    </div></div>
-    <div class="svc-flip reveal"><div class="svc-flip-inner">
-      <div class="svc-front"><div class="svc-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7L12 12L16 14"/><path d="M16 3L20 3M18 1L18 5"/></svg></div><div class="svc-name"><span data-es>Servicio Express</span><span data-en>Express Service</span></div><div class="svc-desc"><span data-es>Entrega garantizada en 24 horas.</span><span data-en>Guaranteed delivery in 24 hours.</span></div><div class="svc-tag">24h</div></div>
-      <div class="svc-back"><div class="svc-back-icon">⚡</div><div class="svc-back-title"><span data-es>Express 24h</span><span data-en>Express 24h</span></div><div class="svc-back-text"><span data-es>Todos los días. Notificación por WhatsApp cuando esté listo.</span><span data-en>Every day. WhatsApp notification when ready.</span></div><div class="svc-back-cta"><span data-es>Contactar →</span><span data-en>Contact →</span></div></div>
-    </div></div>
+  <div class="real-services-grid reveal">
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Ropa diaria</span><span data-en>Daily clothes</span></div><div class="real-svc-tag"><span data-es>Desde €5</span><span data-en>From €5</span></div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Toallas</span><span data-en>Towels</span></div><div class="real-svc-tag"><span data-es>Desde €5</span><span data-en>From €5</span></div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Edredones</span><span data-en>Duvets</span></div><div class="real-svc-tag">XL €9</div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Mantas</span><span data-en>Blankets</span></div><div class="real-svc-tag">L €7</div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Fundas de sofá</span><span data-en>Sofa covers</span></div><div class="real-svc-tag">L €7</div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Ropa de trabajo</span><span data-en>Work clothes</span></div><div class="real-svc-tag"><span data-es>Desde €5</span><span data-en>From €5</span></div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Mantelería</span><span data-en>Tablecloths</span></div><div class="real-svc-tag">M €6</div></div></div>
+    <div class="real-svc-item"><span class="real-svc-dot"></span><div><div class="real-svc-name"><span data-es>Cortinas</span><span data-en>Curtains</span></div><div class="real-svc-tag">XL €9</div></div></div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how-it-works">
+  <div class="reveal" style="text-align:center;margin-bottom:48px;">
+    <div class="section-eyebrow" style="justify-content:center;"><span data-es>Muy fácil</span><span data-en>Very easy</span></div>
+    <h2 class="section-title"><span data-es>Cómo <em>funciona</em></span><span data-en>How it <em>works</em></span></h2>
+  </div>
+  <div class="steps-grid reveal">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6"/><path d="M12 12H8M12 8H8M8 16h2"/></svg>
+      </div>
+      <div class="step-title"><span data-es>Vaciar bolsillos</span><span data-en>Empty pockets</span></div>
+      <div class="step-sub"><span data-es>Prepara tu ropa antes de meter</span><span data-en>Prepare your clothes first</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12Q10 8 12 12Q14 16 16 12"/></svg>
+      </div>
+      <div class="step-title"><span data-es>Meter ropa y cerrar</span><span data-en>Load and close</span></div>
+      <div class="step-sub"><span data-es>Introduce tu ropa y cierra la puerta</span><span data-en>Put your clothes in and close the door</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M7 15h2M15 15h2"/></svg>
+      </div>
+      <div class="step-title"><span data-es>Pagar y seleccionar</span><span data-en>Pay and select</span></div>
+      <div class="step-sub"><span data-es>Tarjeta o efectivo · elige temperatura</span><span data-en>Card or cash · choose temperature</span></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="step-title"><span data-es>Lista en 30 min</span><span data-en>Ready in 30 min</span></div>
+      <div class="step-sub"><span data-es>Recoge tu ropa limpia y fresca</span><span data-en>Pick up your clean fresh clothes</span></div>
+    </div>
   </div>
 </section>
 
@@ -616,12 +748,12 @@
       <span data-es>"Cada prenda cuenta una historia — nosotros la hacemos hermosa."</span>
       <span data-en>"Every garment tells a story — we make sure it's a beautiful one."</span>
     </blockquote>
-    <p class="about-text"><span data-es>Fundados en el corazón del Eixample de Barcelona, nacimos de la pasión por el cuidado excepcional de las prendas y el compromiso con prácticas sostenibles.</span><span data-en>Founded in the heart of Barcelona's Eixample, born from a passion for exceptional fabric care and a commitment to sustainable practices.</span></p>
+    <p class="about-text"><span data-es>Ubicados en Avinguda del Paral·lel, 81, somos una lavandería autoservicio moderna en el corazón de Barcelona. Máquinas nuevas, detergente automático incluido y abiertos los 365 días del año.</span><span data-en>Located on Avinguda del Paral·lel, 81, we are a modern self-service laundry in the heart of Barcelona. New machines, automatic detergent included, and open 365 days a year.</span></p>
     <div class="about-chips">
-      <span class="chip">✓ <span data-es>Certificado Eco</span><span data-en>Eco-Certified</span></span>
-      <span class="chip">✓ <span data-es>Empresa familiar</span><span data-en>Family Owned</span></span>
-      <span class="chip">✓ <span data-es>12 años en BCN</span><span data-en>12 Years in BCN</span></span>
-      <span class="chip">✓ <span data-es>5 estrellas</span><span data-en>5-Star Rated</span></span>
+      <span class="chip">⏱️ 30 min</span>
+      <span class="chip">📅 365 <span data-es>días</span><span data-en>days</span></span>
+      <span class="chip">💳 Card + Cash</span>
+      <span class="chip">⭐ 4.9 Google</span>
     </div>
     <br>
     <a href="about.html" class="btn-outline-dark"><span data-es>Conocer más</span><span data-en>Learn more</span> →</a>
@@ -634,14 +766,14 @@
     <div class="section-eyebrow" style="justify-content:center;"><span data-es>Por qué elegirnos</span><span data-en>Why choose us</span></div>
     <h2 class="section-title"><span data-es>La <em>Diferencia</em></span><span data-en>The <em>Difference</em></span></h2>
     <div class="divider"></div>
-    <p class="section-desc"><span data-es>Cinco razones por las que los clientes más exigentes de Barcelona confían en nosotros.</span><span data-en>Five reasons why Barcelona's most discerning clients trust us.</span></p>
+    <p class="section-desc"><span data-es>Lo que nos hace únicos en Barcelona.</span><span data-en>What makes us unique in Barcelona.</span></p>
   </div>
   <div class="why-grid">
-    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="why-title"><span data-es>Proceso Ecológico</span><span data-en>Eco-Friendly</span></div><div class="why-desc"><span data-es>Disolventes certificados y ahorro de agua.</span><span data-en>Certified solvents and water-saving.</span></div></div>
-    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="why-title"><span data-es>Cuidado Premium</span><span data-en>Premium Care</span></div><div class="why-desc"><span data-es>Seda, cachemira y lino tratados con esmero.</span><span data-en>Silk, cashmere and linen treated with care.</span></div></div>
-    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="why-title"><span data-es>Equipo Experto</span><span data-en>Expert Team</span></div><div class="why-desc"><span data-es>Artesanos con años de experiencia.</span><span data-en>Artisans with years of expertise.</span></div></div>
-    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="why-title"><span data-es>Entrega Rápida</span><span data-en>Fast Turnaround</span></div><div class="why-desc"><span data-es>Estándar 48h, express 24h disponible.</span><span data-en>Standard 48h, express 24h available.</span></div></div>
-    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="why-title"><span data-es>Lujo Accesible</span><span data-en>Affordable Luxury</span></div><div class="why-desc"><span data-es>Precios transparentes, sin costes ocultos.</span><span data-en>Transparent pricing. No hidden fees.</span></div></div>
+    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="why-title"><span data-es>30 minutos</span><span data-en>30 minutes</span></div><div class="why-desc"><span data-es>Tu ropa lista en solo 30 minutos. Rápido y eficaz.</span><span data-en>Your laundry ready in just 30 minutes. Fast and efficient.</span></div></div>
+    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="why-title"><span data-es>Abierto 365 días</span><span data-en>Open 365 days</span></div><div class="why-desc"><span data-es>Todos los días del año de 9h a 22h. Sin excepciones.</span><span data-en>Every day of the year from 9am to 10pm. No exceptions.</span></div></div>
+    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 6 7 12 7 12s7-6 7-12c0-4-3-8-7-8z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="why-title"><span data-es>Ubicación perfecta</span><span data-en>Perfect location</span></div><div class="why-desc"><span data-es>En Avinguda del Paral·lel, cerca del puerto y el centro.</span><span data-en>On Avinguda del Paral·lel, near the port and city centre.</span></div></div>
+    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div class="why-title"><span data-es>Pago fácil</span><span data-en>Easy payment</span></div><div class="why-desc"><span data-es>Tarjeta o efectivo. Sin necesidad de monedas.</span><span data-en>Card or cash. No need for coins.</span></div></div>
+    <div class="why-card reveal"><div class="why-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="why-title"><span data-es>Detergente incluido</span><span data-en>Detergent included</span></div><div class="why-desc"><span data-es>Dosificación automática de detergente y suavizante. Sin extras.</span><span data-en>Automatic detergent and softener dosing. No extras needed.</span></div></div>
   </div>
 </section>
 
@@ -684,8 +816,8 @@
 <!-- ══ CTA BANNER ══ -->
 <div id="cta-banner" class="reveal">
   <div class="cta-text">
-    <h3 class="cta-title"><span data-es>¿Listo para el cuidado <em>perfecto</em>?</span><span data-en>Ready for <em>perfect</em> garment care?</span></h3>
-    <p class="cta-sub"><span data-es>Llámanos o escríbenos — respondemos en minutos.</span><span data-en>Call or message us — we respond within minutes.</span></p>
+    <h3 class="cta-title"><span data-es>¿Necesitas lavar tu ropa <em>hoy</em>?</span><span data-en>Need to do your laundry <em>today</em>?</span></h3>
+    <p class="cta-sub"><span data-es>Abierto ahora · 9h–22h · 365 días al año</span><span data-en>Open now · 9am–10pm · 365 days a year</span></p>
   </div>
   <div class="cta-actions">
     <a href="contact.html" class="btn-primary" style="background:white;color:var(--sky-600);box-shadow:0 6px 20px rgba(0,0,0,0.15);"><span data-es>Contactar ahora</span><span data-en>Contact now</span></a>
