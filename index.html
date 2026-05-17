@@ -45,7 +45,7 @@ body { background: var(--bg); }
 
 /* ── Hero ── */
 #hero {
-  min-height: 100vh; position: relative;
+  min-height: 85vh; position: relative;
   display: flex; align-items: center;
   background: var(--navy); overflow: hidden;
 }
@@ -317,11 +317,9 @@ body { background: var(--bg); }
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-video-wrap" id="videoWrap">
-    <img class="hero-slide active" src="https://i.imgur.com/mWFAsmY.jpg" alt="Customer arriving" id="hero-slide-1"/>
-    <img class="hero-slide" src="https://i.imgur.com/d599f1Z.jpg" alt="Washing"/>
-    <img class="hero-slide" src="https://i.imgur.com/Nom1dYr.jpg" alt="Steaming" id="hero-slide-3"/>
-    <img class="hero-slide" src="https://i.imgur.com/6jK1S70.jpg" alt="Folding"/>
-    <img class="hero-slide" src="https://i.imgur.com/O9U3yLy.jpg" alt="Happy customer"/>
+    <img class="hero-slide active" src="https://i.imgur.com/FQ6PKM4.jpg" alt="Lavanderia interior"/>
+    <img class="hero-slide" src="https://i.imgur.com/QacT7g4.jpg" alt="Real shop machines"/>
+    <img class="hero-slide" src="https://i.imgur.com/h3qj4sB.jpg" alt="Staff cleaning"/>
   </div>
   <div class="hero-overlay"></div>
   <div class="video-label" id="videoLabel"></div>
@@ -329,8 +327,6 @@ body { background: var(--bg); }
     <div class="video-dot active" onclick="switchVideo(0)"></div>
     <div class="video-dot" onclick="switchVideo(1)"></div>
     <div class="video-dot" onclick="switchVideo(2)"></div>
-    <div class="video-dot" onclick="switchVideo(3)"></div>
-    <div class="video-dot" onclick="switchVideo(4)"></div>
   </div>
   <!-- Floating card -->
   <div class="hero-floating-card">
@@ -668,11 +664,9 @@ function animateWords() {
 const videos = document.querySelectorAll("#videoWrap img.hero-slide");
 const dots   = document.querySelectorAll(".video-dot");
 const labels = [
-  { es:"Recogida de ropa",    en:"Laundry pickup"       },
+  { es:"Lavandería Molino",   en:"Lavandería Molino"    },
   { es:"Lavado profesional",  en:"Professional wash"    },
-  { es:"Planchado al vapor",  en:"Professional steaming"},
-  { es:"Doblado perfecto",    en:"Perfect folding"      },
-  { es:"Lista para recoger",  en:"Ready to collect"     },
+  { es:"Siempre limpio",      en:"Always clean"         },
 ];
 let cur = 0;
 
