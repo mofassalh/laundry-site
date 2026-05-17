@@ -115,14 +115,41 @@ body { background: var(--bg); }
 }
 
 @media (max-width: 900px) {
-  .hero-floating-card {
-    position: relative; right: auto; top: auto; transform: none;
-    width: 100%; border-radius: 0; padding: 32px 5vw;
-    box-shadow: none; border: none; border-top: 1px solid var(--border);
+  #hero {
+    min-height: auto !important;
+    flex-direction: column;
   }
-  #hero { flex-direction: column; }
-  .hero-video-wrap { height: 50vh; position: relative; }
-  .hero-video-wrap img.hero-slide { position: absolute; }
+  .hero-video-wrap {
+    position: relative !important;
+    height: 55vw !important;
+    min-height: 260px;
+    width: 100%;
+  }
+  .hero-video-wrap img.hero-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    opacity: 0;
+  }
+  .hero-video-wrap img.hero-slide.active { opacity: 1 !important; }
+  .hero-overlay { position: absolute !important; }
+  .video-dots { position: absolute !important; bottom: 12px !important; left: 50% !important; transform: translateX(-50%) !important; }
+  .hero-floating-card {
+    position: relative !important;
+    right: auto !important; top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 32px 5vw !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: 1px solid var(--border) !important;
+  }
+  .hero-card-title { font-size: 2rem !important; }
+  .hero-card-stats { grid-template-columns: repeat(2,1fr) !important; }
+  .hero-scroll { display: none !important; }
 }
 
 /* ── USP Strip ── */
