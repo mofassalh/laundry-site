@@ -124,6 +124,7 @@ body { background: var(--bg); }
     height: 55vw !important;
     min-height: 260px;
     width: 100%;
+    background: transparent !important;
   }
   .hero-video-wrap img.hero-slide {
     position: absolute !important;
@@ -135,7 +136,7 @@ body { background: var(--bg); }
   }
   .hero-video-wrap img.hero-slide.active { opacity: 1 !important; }
   .hero-overlay { position: absolute !important; }
-  .video-dots { position: absolute !important; bottom: 12px !important; left: 50% !important; transform: translateX(-50%) !important; }
+  .video-dots { position: absolute !important; bottom: 12px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 5 !important; }
   .hero-floating-card {
     position: relative !important;
     right: auto !important; top: auto !important;
@@ -272,7 +273,7 @@ body { background: var(--bg); }
 /* ── Buttons ── */
 .btn-primary { background: var(--navy) !important; }
 .btn-primary:hover { background: #1a2f4a !important; }
-.nav-cta { background: var(--navy) !important; color: white !important; }
+.nav-cta { background: var(--navy) !important; color: white !important; font-weight: 500 !important; }
 .nav-cta:hover { background: #1a2f4a !important; }
 
 /* ── Section titles ── */
@@ -301,7 +302,7 @@ body { background: var(--bg); }
 .find-us-val { font-size: 0.92rem; font-weight: 500; color: var(--navy); line-height: 1.5; }
 .find-us-sub { font-size: 0.78rem; font-weight: 300; color: var(--accent); margin-top: 3px; }
 .find-us-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 12px 22px; border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white !important; padding: 12px 22px; border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
 
 /* Footer color update */
@@ -339,7 +340,7 @@ body { background: var(--bg); }
     <li><a href="services.html"><span data-es>Servicios</span><span data-en>Services</span></a></li>
     <li><a href="about.html"><span data-es>Nosotros</span><span data-en>About</span></a></li>
     <li><a href="gallery.html"><span data-es>Galería</span><span data-en>Gallery</span></a></li>
-    <li><a href="contact.html" class="nav-cta"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
+    <li><a href="contact.html" class="nav-cta" style="color:white !important;"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-switcher">
