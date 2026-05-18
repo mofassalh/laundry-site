@@ -171,7 +171,7 @@ body.lang-en span[data-es] { display: none; }
 
 /* ─── Footer ─── */
 #footer {
-  background: var(--charcoal);
+  background: #F5F2E8;
   padding: 60px 5vw 32px;
 }
 .footer-grid {
@@ -180,7 +180,7 @@ body.lang-en span[data-es] { display: none; }
 }
 .footer-logo {
   font-family: var(--display); font-size: 2rem; font-weight: 500;
-  color: white; display: block; margin-bottom: 12px;
+  color: var(--charcoal); display: block; margin-bottom: 12px;
 }
 .footer-logo span { color: var(--sky-400); }
 .footer-tagline {
