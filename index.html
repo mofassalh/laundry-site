@@ -417,7 +417,7 @@ body.lang-en [data-es] { display: none !important; }
     <img class="hero-slide active" src="https://i.imgur.com/7cDPEH6.jpg" alt="Lavanderia interior"/>
     <img class="hero-slide" src="https://i.imgur.com/QacT7g4.jpg" alt="Real shop machines"/>
     <img class="hero-slide" src="https://i.imgur.com/h3qj4sB.jpg" alt="Staff cleaning"/>
-    <video class="hero-slide" src="https://res.cloudinary.com/dl9qpcfe1/video/upload/v1779135843/vedio_ddv0ge.mp4" muted autoplay loop playsinline></video>
+    <video class="hero-slide" src="https://res.cloudinary.com/dl9qpcfe1/video/upload/v1779135843/vedio_ddv0ge.mp4" muted playsinline></video>
   </div>
   <div class="hero-overlay"></div>
   <div class="video-label" id="videoLabel"></div>
@@ -769,7 +769,17 @@ function switchVideo(idx) {
   setTimeout(() => { lbl.textContent = labels[cur][lang]; lbl.style.opacity = "1"; lbl.style.transition = "opacity 0.5s"; }, 300);
 }
 setTimeout(() => switchVideo(0), 100);
-setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
+let timer = setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
+
+document.querySelectorAll("#videoWrap video").forEach(v => {
+  v.addEventListener("play", () => {
+    clearInterval(timer);
+  });
+  v.addEventListener("ended", () => {
+    switchVideo((cur + 1) % videos.length);
+    timer = setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
+  });
+});
 
 /* ── Parallax ── */
 const pImg = document.getElementById("parallaxImg");
