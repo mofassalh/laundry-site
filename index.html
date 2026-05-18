@@ -757,9 +757,11 @@ let cur = 0;
 
 function switchVideo(idx) {
   videos[cur].classList.remove("active");
+  if (videos[cur].tagName === 'VIDEO') videos[cur].pause();
   dots[cur].classList.remove("active");
   cur = idx;
   videos[cur].classList.add("active");
+  if (videos[cur].tagName === 'VIDEO') videos[cur].play();
   dots[cur].classList.add("active");
   const lbl  = document.getElementById("videoLabel");
   const lang = document.body.classList.contains("lang-en") ? "en" : "es";
