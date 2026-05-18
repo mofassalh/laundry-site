@@ -312,6 +312,10 @@ body { background: var(--bg); }
   .find-us-grid { grid-template-columns: 1fr; }
   .find-us-map { height: 260px; }
 }
+
+/* Language toggle fix */
+body:not(.lang-en) [data-en] { display: none !important; }
+body.lang-en [data-es] { display: none !important; }
 </style>
 </head>
 <body>
