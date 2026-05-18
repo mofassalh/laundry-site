@@ -56,6 +56,13 @@ body { background: var(--bg); }
   opacity: 0; transition: opacity 1.4s ease;
 }
 .hero-video-wrap img.hero-slide.active { opacity: 1; }
+.hero-video-wrap video.hero-slide {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  opacity: 0; transition: opacity 1.4s ease;
+}
+.hero-video-wrap video.hero-slide.active { opacity: 1; }
 #hero-slide-1 { object-position: 35% center; }
 #hero-slide-3 { object-position: 65% center; }
 
@@ -417,6 +424,7 @@ body.lang-en [data-es] { display: none !important; }
     <div class="video-dot active" onclick="switchVideo(0)"></div>
     <div class="video-dot" onclick="switchVideo(1)"></div>
     <div class="video-dot" onclick="switchVideo(2)"></div>
+    <div class="video-dot" onclick="switchVideo(3)"></div>
   </div>
   <!-- Floating card -->
   <div class="hero-floating-card">
@@ -736,12 +744,13 @@ function animateWords() {
 }
 
 /* ── Multi-image switcher ── */
-const videos = document.querySelectorAll("#videoWrap img.hero-slide");
+const videos = document.querySelectorAll("#videoWrap .hero-slide");
 const dots   = document.querySelectorAll(".video-dot");
 const labels = [
   { es:"Lavandería Molino",   en:"Lavandería Molino"    },
   { es:"Lavado profesional",  en:"Professional wash"    },
   { es:"Siempre limpio",      en:"Always clean"         },
+  { es:"Lavandería Molino",   en:"Lavandería Molino"    },
 ];
 let cur = 0;
 
