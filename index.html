@@ -289,6 +289,28 @@ body { background: var(--bg); }
 @media (max-width: 860px) { #about-strip { grid-template-columns: 1fr; gap: 48px; } }
 @media (max-width: 640px) { .usp-grid { grid-template-columns: repeat(2,1fr); } .real-services-grid { grid-template-columns: 1fr 1fr; } .steps-grid { grid-template-columns: 1fr 1fr; } .pricing-home-grid { grid-template-columns: 1fr 1fr; } .why-grid { grid-template-columns: 1fr 1fr; } #cta-banner { text-align: center; justify-content: center; } }
 @media (max-width: 768px) { #hero-slide-1 { object-position: 35% center; } #hero-slide-3 { object-position: 65% center; } }
+
+/* ── Find Us ── */
+#find-us { padding: 80px 5vw; background: var(--card); }
+.find-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.find-us-map { border-radius: 20px; overflow: hidden; height: 400px; border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(13,31,60,0.1); }
+.find-us-info { display: flex; flex-direction: column; gap: 24px; margin-bottom: 32px; margin-top: 28px; }
+.find-us-row { display: flex; gap: 14px; align-items: flex-start; }
+.find-us-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--navy); flex-shrink: 0; }
+.find-us-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-t); margin-bottom: 4px; }
+.find-us-val { font-size: 0.92rem; font-weight: 500; color: var(--navy); line-height: 1.5; }
+.find-us-sub { font-size: 0.78rem; font-weight: 300; color: var(--accent); margin-top: 3px; }
+.find-us-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 12px 22px; border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
+
+/* Footer color update */
+#footer { background: var(--navy); }
+
+@media (max-width: 860px) {
+  .find-us-grid { grid-template-columns: 1fr; }
+  .find-us-map { height: 260px; }
+}
 </style>
 </head>
 <body>
@@ -532,47 +554,7 @@ body { background: var(--bg); }
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
-<section id="about-strip">
-  <div class="about-img-wrap reveal">
-    <div class="about-img-main">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&auto=format&fit=crop" alt="Our laundry" loading="lazy" id="parallaxImg"/>
-    </div>
-    <div class="about-img-float">
-      <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=85&auto=format&fit=crop" alt="Clean towels" loading="lazy"/>
-    </div>
-    <div class="about-badge">
-      <div class="about-badge-icon">⭐</div>
-      <div class="about-badge-text">4.9 Google</div>
-      <div class="about-badge-sub">276 <span data-es>reseñas</span><span data-en>reviews</span></div>
-    </div>
-  </div>
-  <div class="about-content reveal">
-    <div class="section-eyebrow"><span data-es>Quiénes somos</span><span data-en>Who we are</span></div>
-    <h2 class="section-title"><span data-es>Lavandería <em>moderna</em> en Barcelona</span><span data-en>Modern <em>laundry</em> in Barcelona</span></h2>
-    <div class="divider"></div>
-    <blockquote class="about-quote">
-      <span data-es>"Tu ropa lista en 30 minutos — todos los días del año."</span>
-      <span data-en>"Your laundry ready in 30 minutes — every day of the year."</span>
-    </blockquote>
-    <p class="about-text">
-      <span data-es>Ubicados en Avinguda del Paral·lel, 81, somos una lavandería autoservicio moderna en el corazón de Barcelona. Máquinas nuevas, detergente automático incluido y abiertos los 365 días del año de 9h a 22h.</span>
-      <span data-en>Located on Avinguda del Paral·lel, 81, we are a modern self-service laundry in the heart of Barcelona. New machines, automatic detergent included, and open 365 days a year from 9am to 10pm.</span>
-    </p>
-    <p class="about-text">
-      <span data-es>Aceptamos pago con tarjeta y efectivo. Sin necesidad de monedas. Fácil, rápido y limpio.</span>
-      <span data-en>We accept card and cash payments. No need for coins. Easy, fast and clean.</span>
-    </p>
-    <div class="about-chips">
-      <span class="chip">⏱️ 30 min</span>
-      <span class="chip">📅 365 <span data-es>días</span><span data-en>days</span></span>
-      <span class="chip">💳 Card + Cash</span>
-      <span class="chip">⭐ 4.9 Google</span>
-    </div>
-    <br>
-    <a href="contact.html" class="btn-outline-dark"><span data-es>Contactar</span><span data-en>Contact us</span> →</a>
-  </div>
-</section>
+
 
 <!-- ══ WHY US ══ -->
 <section id="why">
@@ -610,17 +592,69 @@ body { background: var(--bg); }
 
 
 
-<!-- ══ CTA BANNER ══ -->
-<div id="cta-banner" class="reveal">
-  <div class="cta-text">
-    <h3 class="cta-title"><span data-es>¿Necesitas lavar tu ropa <em>hoy</em>?</span><span data-en>Need to do your laundry <em>today</em>?</span></h3>
-    <p class="cta-sub"><span data-es>Abierto ahora · 9h–22h · 365 días al año · Avinguda del Paral·lel, 81</span><span data-en>Open now · 9am–10pm · 365 days a year · Avinguda del Paral·lel, 81</span></p>
-  </div>
+
   <div class="cta-actions">
     <a href="contact.html" class="btn-primary" style="background:var(--bg);color:var(--navy);box-shadow:0 6px 20px rgba(0,0,0,0.15);"><span data-es>Cómo llegar</span><span data-en>Get directions</span></a>
     <a href="https://wa.me/34620162599" class="btn-outline" target="_blank">WhatsApp</a>
   </div>
 </div>
+
+<!-- ══ FIND US ══ -->
+<section id="find-us">
+  <div class="find-us-grid">
+    <div class="find-us-map reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2!2d2.1644!3d41.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a35b2d3e3527%3A0x196f4b8bc2862683!2sLavander%C3%ADa%20Molino!5e0!3m2!1sen!2ses!4v1700000000000!5m2!1sen!2ses"
+        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+    <div class="find-us-content reveal">
+      <div class="section-eyebrow"><span data-es>Ubicación</span><span data-en>Location</span></div>
+      <h2 class="section-title"><span data-es>Encuéntranos</span><span data-en>Find <em>Us</em></span></h2>
+      <div class="divider"></div>
+      <div class="find-us-info">
+        <div class="find-us-row">
+          <div class="find-us-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="find-us-label"><span data-es>Dirección</span><span data-en>Address</span></div>
+            <div class="find-us-val">Avinguda del Paral·lel, 81<br>Sants-Montjuïc, 08004 Barcelona</div>
+            <div class="find-us-sub"><span data-es>A 5 min del Puerto y Las Ramblas</span><span data-en>5 min from the Port and Las Ramblas</span></div>
+          </div>
+        </div>
+        <div class="find-us-row">
+          <div class="find-us-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <div class="find-us-label"><span data-es>Horario</span><span data-en>Hours</span></div>
+            <div class="find-us-val"><span data-es>Todos los días · 9h – 22h</span><span data-en>Every day · 9am – 10pm</span></div>
+            <div class="find-us-sub">365 <span data-es>días al año</span><span data-en>days a year</span></div>
+          </div>
+        </div>
+        <div class="find-us-row">
+          <div class="find-us-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.1 19.79 19.79 0 0 1 1.61 3.52 2 2 0 0 1 3.6 1.35h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="find-us-label"><span data-es>Teléfono</span><span data-en>Phone</span></div>
+            <div class="find-us-val"><a href="tel:+34620162599" style="color:var(--navy);">+34 620 16 25 99</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="find-us-btns">
+        <a href="https://wa.me/34620162599" target="_blank" class="btn-whatsapp">
+          <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.google.com/maps/place/Lavander%C3%ADa+Molino/@41.3748042,2.1678517,997m" target="_blank" class="btn-outline-dark">
+          <span data-es>Cómo llegar</span><span data-en>Get directions</span> →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ FOOTER ══ -->
 <footer id="footer">
