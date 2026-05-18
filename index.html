@@ -769,7 +769,23 @@ function switchVideo(idx) {
   setTimeout(() => { lbl.textContent = labels[cur][lang]; lbl.style.opacity = "1"; lbl.style.transition = "opacity 0.5s"; }, 300);
 }
 setTimeout(() => switchVideo(0), 100);
-setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
+let autoTimer = setInterval(() => {
+  if (videos[cur] && videos[cur].tagName !== "VIDEO") {
+    switchVideo((cur + 1) % videos.length);
+  }
+}, 6000);
+
+document.querySelectorAll("#videoWrap video").forEach(v => {
+  v.addEventListener("play", () => clearInterval(autoTimer));
+  v.addEventListener("ended", () => {
+    switchVideo((cur + 1) % videos.length);
+    autoTimer = setInterval(() => {
+      if (videos[cur] && videos[cur].tagName !== "VIDEO") {
+        switchVideo((cur + 1) % videos.length);
+      }
+    }, 6000);
+  });
+});
 
 /* ── Parallax ── */
 const pImg = document.getElementById("parallaxImg");
