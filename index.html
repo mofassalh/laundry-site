@@ -302,7 +302,22 @@ body { background: var(--bg); }
 .find-us-val { font-size: 0.92rem; font-weight: 500; color: var(--navy); line-height: 1.5; }
 .find-us-sub { font-size: 0.78rem; font-weight: 300; color: var(--accent); margin-top: 3px; }
 .find-us-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white !important; padding: 12px 22px; border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-whatsapp { 
+  display: inline-flex; align-items: center; gap: 8px; 
+  background: #25D366 !important; color: white !important; 
+  padding: 12px 22px; border-radius: 100px; 
+  font-size: 0.85rem; font-weight: 500; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.btn-get-directions {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--navy) !important; color: white !important;
+  padding: 12px 22px; border-radius: 100px;
+  font-size: 0.85rem; font-weight: 500;
+  border: none !important;
+  transition: transform 0.3s ease;
+}
+.btn-get-directions:hover { transform: translateY(-2px); }
 .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
 
 /* Footer color update */
