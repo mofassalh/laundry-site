@@ -1,8 +1,17 @@
 /* ============================================================
-   shared.js — Premium animations + interactions
+   shared.js — Premium animations v2
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Scroll progress bar ── */
+  const prog = document.createElement('div');
+  prog.id = 'scroll-progress';
+  document.body.prepend(prog);
+  window.addEventListener('scroll', () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (window.scrollY / docH * 100) + '%';
+  });
 
   /* ── Navbar scroll ── */
   const navbar = document.getElementById('navbar');
@@ -15,11 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Language switcher ── */
   const savedLang = localStorage.getItem('siteLang') || 'es';
   setLang(savedLang);
-
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
   });
-
   function setLang(lang) {
     localStorage.setItem('siteLang', lang);
     document.body.classList.toggle('lang-en', lang === 'en');
@@ -41,20 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Scroll reveal (staggered) ── */
-  const allReveal = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-  if (allReveal.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    allReveal.forEach(el => observer.observe(el));
-  }
-
   /* ── Active nav link ── */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
@@ -64,42 +57,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Cursor glow (desktop) ── */
-  const glow = document.createElement('div');
-  glow.id = 'cursor-glow';
-  document.body.appendChild(glow);
-  let glowX = 0, glowY = 0, curX = 0, curY = 0;
-  window.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
-  (function animateGlow() {
-    glowX += (curX - glowX) * 0.08;
-    glowY += (curY - glowY) * 0.08;
-    glow.style.left = glowX + 'px';
-    glow.style.top  = glowY + 'px';
-    requestAnimationFrame(animateGlow);
-  })();
+  /* ── Scroll reveal (all types) ── */
+  const allReveal = document.querySelectorAll(
+    '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-card'
+  );
+  if (allReveal.length) {
+    const revealOb = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 75);
+          revealOb.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    allReveal.forEach(el => revealOb.observe(el));
+  }
 
-  /* ── Parallax hero ── */
+  /* ── Split text animation ── */
+  document.querySelectorAll('.split-text').forEach(el => {
+    const words = el.innerText.split(' ');
+    el.innerHTML = words.map(w =>
+      `<span class="split-word">${w}</span>`
+    ).join(' ');
+    const spans = el.querySelectorAll('.split-word');
+    const ob = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        spans.forEach((s, i) => {
+          setTimeout(() => s.classList.add('visible'), i * 100);
+        });
+        ob.disconnect();
+      }
+    }, { threshold: 0.3 });
+    ob.observe(el);
+  });
+
+  /* ── Cursor glow (desktop only) ── */
+  if (window.innerWidth > 768) {
+    const glow = document.createElement('div');
+    glow.id = 'cursor-glow';
+    document.body.appendChild(glow);
+    let glowX = 0, glowY = 0, curX = 0, curY = 0;
+    window.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
+    (function animateGlow() {
+      glowX += (curX - glowX) * 0.08;
+      glowY += (curY - glowY) * 0.08;
+      glow.style.left = glowX + 'px';
+      glow.style.top  = glowY + 'px';
+      requestAnimationFrame(animateGlow);
+    })();
+  }
+
+  /* ── Parallax hero images ── */
   const parallaxImgs = document.querySelectorAll('.parallax-img');
   if (parallaxImgs.length) {
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
       parallaxImgs.forEach(img => {
-        const speed = parseFloat(img.dataset.speed || 0.25);
-        img.style.transform = `translateY(${scrollY * speed}px)`;
+        const speed = parseFloat(img.dataset.speed || 0.2);
+        img.style.transform = `translateY(${window.scrollY * speed}px)`;
       });
     });
   }
 
-  /* ── Card tilt on hover (subtle 3D) ── */
+  /* ── Card 3D tilt ── */
   document.querySelectorAll('.card-tilt').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width  - 0.5;
       const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
+      card.style.transform =
+        `perspective(700px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px) scale(1.01)`;
     });
     card.addEventListener('mouseleave', () => {
+      card.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
       card.style.transform = '';
+      setTimeout(() => card.style.transition = '', 500);
     });
   });
 
@@ -107,14 +138,34 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
     btn.addEventListener('mousemove', e => {
       const rect = btn.getBoundingClientRect();
-      const x = (e.clientX - rect.left - rect.width  / 2) * 0.25;
-      const y = (e.clientY - rect.top  - rect.height / 2) * 0.25;
+      const x = (e.clientX - rect.left - rect.width  / 2) * 0.22;
+      const y = (e.clientY - rect.top  - rect.height / 2) * 0.22;
       btn.style.transform = `translate(${x}px, ${y}px) translateY(-2px)`;
     });
     btn.addEventListener('mouseleave', () => {
+      btn.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1)';
       btn.style.transform = '';
     });
   });
+
+  /* ── Number counter ── */
+  const counterOb = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.target;
+      let n = 0;
+      const step = target / (1800 / 16);
+      const t = setInterval(() => {
+        n += step;
+        if (n >= target) { n = target; clearInterval(t); }
+        el.textContent = target >= 100
+          ? Math.floor(n).toLocaleString()
+          : Math.floor(n);
+      }, 16);
+      counterOb.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(c => counterOb.observe(c));
 
   /* ── Smooth page transitions ── */
   const pt = document.getElementById('page-transition');
@@ -122,7 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href]').forEach(a => {
       const h = a.getAttribute('href');
       if (!h || h.startsWith('#') || h.startsWith('tel:') ||
-          h.startsWith('mailto:') || h.startsWith('http') || a.target === '_blank') return;
+          h.startsWith('mailto:') || h.startsWith('http') ||
+          a.target === '_blank') return;
       a.addEventListener('click', e => {
         e.preventDefault();
         pt.classList.add('entering');
@@ -135,21 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => pt.classList.remove('leaving'), 500);
     });
   }
-
-  /* ── Number counter ── */
-  const counterOb = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target, target = +el.dataset.target;
-      let n = 0, step = target / (1800 / 16);
-      const t = setInterval(() => {
-        n += step;
-        if (n >= target) { n = target; clearInterval(t); }
-        el.textContent = target >= 100 ? Math.floor(n).toLocaleString() : Math.floor(n);
-      }, 16);
-      counterOb.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.count').forEach(c => counterOb.observe(c));
 
 });
