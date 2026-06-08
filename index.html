@@ -421,6 +421,21 @@
   hamburger.addEventListener("click", () => {
     mobileMenu.style.display = mobileMenu.style.display === "none" ? "block" : "none";
   });
+
+  // Reveal animation observer
+  const revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
+  if (revealEls.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  // Hero elements visible immediately
+  document.querySelectorAll(".hero *").forEach(el => {
+    el.style.opacity = "1";
+    el.style.transform = "none";
+  });
 </script>
 </body>
 </html>
