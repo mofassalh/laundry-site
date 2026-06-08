@@ -1,176 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lavandería Molino — Barcelona</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: #F5F2E8; color: #0d1f3c; font-family: "DM Sans", sans-serif; overflow-x: hidden; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lavanderia Molino - Barcelona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#F5F2E8;color:#0d1f3c;font-family:"DM Sans",sans-serif;overflow-x:hidden;}
 
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: #F5F2E8; border-bottom: 1px solid #d4cfc0;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 68px;
-    }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-    .nav-brand span { font-family: "Bodoni Moda", serif; font-size: 1.2rem; color: #0d1f3c; font-weight: 600; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: #0d1f3c; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: #0ea5e9; }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .lang-toggle { background: none; border: 1.5px solid #0d1f3c; border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: #0d1f3c; letter-spacing: 0.05em; transition: all 0.2s; }
-    .lang-toggle:hover { background: #0d1f3c; color: #F5F2E8; }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: #0d1f3c; border-radius: 2px; }
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:#F5F2E8;border-bottom:1px solid #d4cfc0;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;}
+.nav-brand span{font-family:"Bodoni Moda",serif;font-size:1.2rem;color:#0d1f3c;font-weight:600;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:#0d1f3c;font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:#0ea5e9;}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.lang-toggle{background:none;border:1.5px solid #0d1f3c;border-radius:20px;padding:4px 14px;font-size:0.78rem;font-weight:600;cursor:pointer;color:#0d1f3c;transition:all 0.2s;}
+.lang-toggle:hover{background:#0d1f3c;color:#F5F2E8;}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:#0d1f3c;border-radius:2px;}
 
-    .hero { min-height: 100vh; padding: 68px 5% 0; display: flex; align-items: center; }
-    .hero-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 5rem 0;
-    }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #e8e4d8; border: 1px solid #d4cfc0; border-radius: 20px;
-      padding: 6px 16px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: #0ea5e9; margin-bottom: 1.5rem;
-    }
-    .hero-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #0ea5e9; }
-    .hero-title {
-      font-family: "Bodoni Moda", serif; font-size: clamp(2.8rem, 5vw, 4.2rem);
-      line-height: 1.1; font-weight: 700; color: #0d1f3c; margin-bottom: 0.4rem;
-    }
-    .hero-title .accent { color: #0ea5e9; display: block; font-style: italic; }
-    .hero-subtitle { font-size: 1.05rem; color: #4a5568; line-height: 1.7; max-width: 440px; margin: 1.2rem 0 2rem; }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: #0d1f3c; color: #F5F2E8; border: none; border-radius: 4px;
-      padding: 14px 28px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; cursor: pointer; text-decoration: none;
-      transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { background: #0ea5e9; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent; color: #0d1f3c; border: 2px solid #0d1f3c; border-radius: 4px;
-      padding: 14px 28px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; cursor: pointer; text-decoration: none;
-      transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-outline:hover { background: #0d1f3c; color: #F5F2E8; transform: translateY(-2px); }
-    .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #d4cfc0; }
-    .hero-stat-num { font-family: "Bodoni Moda", serif; font-size: 1.8rem; font-weight: 700; color: #0d1f3c; }
-    .hero-stat-label { font-size: 0.78rem; color: #6b7280; letter-spacing: 0.05em; margin-top: 2px; }
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#F5F2E8;border-bottom:1px solid #d4cfc0;z-index:999;padding:1.5rem 5%;}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:1rem;}
+.mobile-menu a{text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;letter-spacing:0.08em;}
 
-    .hero-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; gap: 12px; border-radius: 16px; overflow: hidden; }
-    .mosaic-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-    .mosaic-img:hover { transform: scale(1.04); }
-    .mosaic-tall { grid-row: span 2; }
+/* HERO */
+.hero{min-height:100vh;padding-top:68px;display:flex;align-items:center;background:#F5F2E8;}
+.hero-inner{width:100%;max-width:1200px;margin:0 auto;padding:5rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:#e8e4d8;border:1px solid #d4cfc0;border-radius:20px;padding:6px 16px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#0ea5e9;margin-bottom:1.5rem;}
+.hero-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:#0ea5e9;}
+.hero-title{font-family:"Bodoni Moda",serif;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.1;font-weight:700;color:#0d1f3c;margin-bottom:0.4rem;}
+.hero-title .blue{color:#0ea5e9;display:block;font-style:italic;}
+.hero-sub{font-size:1.05rem;color:#4a5568;line-height:1.7;max-width:440px;margin:1.2rem 0 2rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-dark{background:#0d1f3c;color:#F5F2E8;border:none;border-radius:4px;padding:14px 28px;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;}
+.btn-dark:hover{background:#0ea5e9;transform:translateY(-2px);}
+.btn-border{background:transparent;color:#0d1f3c;border:2px solid #0d1f3c;border-radius:4px;padding:14px 28px;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;}
+.btn-border:hover{background:#0d1f3c;color:#F5F2E8;transform:translateY(-2px);}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid #d4cfc0;flex-wrap:wrap;}
+.stat-num{font-family:"Bodoni Moda",serif;font-size:1.8rem;font-weight:700;color:#0d1f3c;display:block;}
+.stat-label{font-size:0.75rem;color:#6b7280;letter-spacing:0.05em;text-transform:uppercase;margin-top:2px;display:block;}
 
-    .services-section { padding: 6rem 5%; }
-    .section-center { max-width: 1200px; margin: 0 auto; }
-    .section-label { text-align: center; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #0ea5e9; margin-bottom: 0.8rem; }
-    .section-title { text-align: center; font-family: "Bodoni Moda", serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: #0d1f3c; margin-bottom: 3rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-    .service-card {
-      background: #e8e4d8; border: 1px solid #d4cfc0; border-radius: 12px;
-      padding: 2rem 1.5rem; transition: all 0.3s; cursor: pointer; text-decoration: none; display: block;
-    }
-    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(13,31,60,0.12); border-color: #0ea5e9; }
-    .service-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .service-name { font-family: "Bodoni Moda", serif; font-size: 1.1rem; font-weight: 700; color: #0d1f3c; margin-bottom: 0.4rem; }
-    .service-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.5; margin-bottom: 1.2rem; }
-    .service-link { font-size: 0.8rem; font-weight: 600; color: #0ea5e9; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; }
-    .service-link::after { content: "→"; transition: transform 0.2s; }
-    .service-card:hover .service-link::after { transform: translateX(4px); }
+/* MOSAIC */
+.hero-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 220px;gap:12px;border-radius:16px;overflow:hidden;}
+.mosaic-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+.mosaic-img:hover{transform:scale(1.04);}
+.mosaic-tall{grid-row:span 2;}
 
-    .hiw-section { padding: 6rem 5%; background: #0d1f3c; }
-    .hiw-section .section-label { color: #0ea5e9; }
-    .hiw-section .section-title { color: #F5F2E8; }
-    .hiw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-    .hiw-step { text-align: center; }
-    .hiw-num {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(14,165,233,0.15); border: 1.5px solid #0ea5e9;
-      display: flex; align-items: center; justify-content: center;
-      font-family: "Bodoni Moda", serif; font-size: 1.3rem; font-weight: 700; color: #0ea5e9;
-      margin: 0 auto 1.2rem;
-    }
-    .hiw-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .hiw-title { font-family: "Bodoni Moda", serif; font-size: 1rem; font-weight: 700; color: #F5F2E8; margin-bottom: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
-    .hiw-desc { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
+/* SERVICES */
+.sec{padding:6rem 5%;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-label{text-align:center;font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#0ea5e9;margin-bottom:0.8rem;display:block;}
+.sec-title{text-align:center;font-family:"Bodoni Moda",serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#0d1f3c;margin-bottom:3rem;}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.card{background:#e8e4d8;border:1px solid #d4cfc0;border-radius:12px;padding:2rem 1.5rem;transition:all 0.3s;text-decoration:none;display:block;}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(13,31,60,0.12);border-color:#0ea5e9;}
+.card-icon{font-size:2.2rem;margin-bottom:1rem;}
+.card-name{font-family:"Bodoni Moda",serif;font-size:1.1rem;font-weight:700;color:#0d1f3c;margin-bottom:0.4rem;}
+.card-desc{font-size:0.82rem;color:#6b7280;line-height:1.5;margin-bottom:1.2rem;}
+.card-link{font-size:0.8rem;font-weight:600;color:#0ea5e9;letter-spacing:0.05em;}
 
-    .testi-section { padding: 6rem 5%; }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-    .testi-card { background: #e8e4d8; border: 1px solid #d4cfc0; border-radius: 12px; padding: 2rem; }
-    .testi-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
-    .testi-text { font-size: 0.9rem; color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
-    .testi-author { font-size: 0.82rem; font-weight: 600; color: #0d1f3c; }
-    .testi-via { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; }
+/* HOW IT WORKS */
+.hiw{padding:6rem 5%;background:#0d1f3c;}
+.hiw .sec-label{color:#0ea5e9;}
+.hiw .sec-title{color:#F5F2E8;}
+.hiw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1200px;margin:0 auto;}
+.hiw-step{text-align:center;}
+.hiw-num{width:56px;height:56px;border-radius:50%;background:rgba(14,165,233,0.15);border:1.5px solid #0ea5e9;display:flex;align-items:center;justify-content:center;font-family:"Bodoni Moda",serif;font-size:1.3rem;font-weight:700;color:#0ea5e9;margin:0 auto 1.2rem;}
+.hiw-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.hiw-name{font-family:"Bodoni Moda",serif;font-size:1rem;font-weight:700;color:#F5F2E8;margin-bottom:0.6rem;letter-spacing:0.05em;text-transform:uppercase;}
+.hiw-desc{font-size:0.85rem;color:#94a3b8;line-height:1.6;}
 
-    .findus-section { padding: 6rem 5%; background: #e8e4d8; }
-    .findus-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .findus-info .section-label { text-align: left; }
-    .findus-info .section-title { text-align: left; margin-bottom: 1.5rem; }
-    .findus-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; }
-    .findus-detail-icon { font-size: 1.2rem; margin-top: 2px; }
-    .findus-detail-text { font-size: 0.9rem; color: #4a5568; line-height: 1.6; }
-    .findus-detail-text strong { color: #0d1f3c; display: block; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
-    .map-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(13,31,60,0.1); height: 380px; }
-    .map-wrap iframe { width: 100%; height: 100%; border: none; }
+/* TESTIMONIALS */
+.testi{padding:6rem 5%;background:#F5F2E8;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+.testi-card{background:#e8e4d8;border:1px solid #d4cfc0;border-radius:12px;padding:2rem;}
+.testi-stars{color:#f59e0b;font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px;}
+.testi-text{font-size:0.9rem;color:#4a5568;line-height:1.7;font-style:italic;margin-bottom:1.2rem;}
+.testi-author{font-size:0.82rem;font-weight:600;color:#0d1f3c;}
+.testi-via{font-size:0.75rem;color:#9ca3af;margin-top:2px;}
 
-    .footer { background: #0d1f3c; color: #94a3b8; padding: 3rem 5%; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-    .footer-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
-    .footer-brand-name { font-family: "Bodoni Moda", serif; font-size: 1.1rem; color: #F5F2E8; font-weight: 600; margin-bottom: 0.8rem; }
-    .footer-brand p { font-size: 0.82rem; line-height: 1.7; max-width: 240px; }
-    .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #F5F2E8; margin-bottom: 1rem; }
-    .footer-col a { display: block; font-size: 0.82rem; color: #94a3b8; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
-    .footer-col a:hover { color: #0ea5e9; }
-    .footer-col p { font-size: 0.82rem; line-height: 1.7; }
-    .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+/* FIND US */
+.findus{padding:6rem 5%;background:#e8e4d8;}
+.findus-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.findus .sec-label,.findus .sec-title{text-align:left;}
+.findus .sec-title{margin-bottom:1.5rem;}
+.detail{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.detail-icon{font-size:1.2rem;margin-top:2px;}
+.detail-text{font-size:0.9rem;color:#4a5568;line-height:1.6;}
+.detail-text strong{color:#0d1f3c;display:block;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:2px;}
+.map-box{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(13,31,60,0.1);height:380px;}
+.map-box iframe{width:100%;height:100%;border:none;}
 
-    .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 56px; height: 56px; border-radius: 50%; background: #25d366;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(37,211,102,0.4); text-decoration: none;
-      transition: transform 0.3s; animation: wa-pulse 2s infinite;
-    }
-    .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 28px; height: 28px; fill: white; }
-    @keyframes wa-pulse { 0%,100%{box-shadow:0 8px 24px rgba(37,211,102,0.4)} 50%{box-shadow:0 8px 32px rgba(37,211,102,0.7)} }
+/* FOOTER */
+.footer{background:#0d1f3c;color:#94a3b8;padding:3rem 5%;}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.footer-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;margin-bottom:1rem;}
+.footer-logo-name{font-family:"Bodoni Moda",serif;font-size:1.1rem;color:#F5F2E8;font-weight:600;margin-bottom:0.8rem;}
+.footer-logo p{font-size:0.82rem;line-height:1.7;max-width:240px;}
+.fcol h4{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#F5F2E8;margin-bottom:1rem;}
+.fcol a{display:block;font-size:0.82rem;color:#94a3b8;text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
+.fcol a:hover{color:#0ea5e9;}
+.fcol p{font-size:0.82rem;line-height:1.7;}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;}
 
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 0 3rem; }
-      .hero-mosaic { grid-template-rows: 160px 160px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .hiw-grid { grid-template-columns: repeat(2, 1fr); }
-      .testi-grid { grid-template-columns: 1fr; }
-      .findus-inner { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-    }
-    @media (max-width: 500px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .hiw-grid { grid-template-columns: 1fr; }
-      .hero-stats { flex-wrap: wrap; gap: 1rem; }
-      .footer-inner { grid-template-columns: 1fr; }
-    }
-  </style>
+/* WHATSAPP */
+.wa{position:fixed;bottom:28px;right:28px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,0.4);text-decoration:none;transition:transform 0.3s;}
+.wa:hover{transform:scale(1.1);}
+.wa svg{width:28px;height:28px;fill:white;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem;padding:3rem 5%;}
+  .hero-mosaic{grid-template-rows:160px 160px;}
+  .cards4{grid-template-columns:repeat(2,1fr);}
+  .hiw-grid{grid-template-columns:repeat(2,1fr);}
+  .testi-grid{grid-template-columns:1fr;}
+  .findus-inner{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+}
+@media(max-width:500px){
+  .cards4{grid-template-columns:1fr;}
+  .hiw-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-brand">
-    <img src="logo.jpg" alt="Lavanderia Molino" />
+    <img src="logo.jpg" alt="Lavanderia Molino"/>
     <span>Lavanderia Molino</span>
   </a>
   <ul class="nav-links">
@@ -182,141 +152,142 @@
   </ul>
   <div class="nav-right">
     <button class="lang-toggle" id="langBtn">EN</button>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <button class="nav-hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<div id="mobileMenu" style="display:none;position:fixed;top:68px;left:0;right:0;background:#F5F2E8;border-bottom:1px solid #d4cfc0;z-index:99;padding:1.5rem 5%;">
-  <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
-    <li><a href="index.html" style="text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;" data-es="INICIO" data-en="HOME">INICIO</a></li>
-    <li><a href="services.html" style="text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;" data-es="SERVICIOS" data-en="SERVICES">SERVICIOS</a></li>
-    <li><a href="about.html" style="text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;" data-es="NOSOTROS" data-en="ABOUT">NOSOTROS</a></li>
-    <li><a href="gallery.html" style="text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;" data-es="GALERIA" data-en="GALLERY">GALERIA</a></li>
-    <li><a href="contact.html" style="text-decoration:none;color:#0d1f3c;font-weight:600;font-size:0.9rem;" data-es="CONTACTO" data-en="CONTACT">CONTACTO</a></li>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html" data-es="INICIO" data-en="HOME">INICIO</a></li>
+    <li><a href="services.html" data-es="SERVICIOS" data-en="SERVICES">SERVICIOS</a></li>
+    <li><a href="about.html" data-es="NOSOTROS" data-en="ABOUT">NOSOTROS</a></li>
+    <li><a href="gallery.html" data-es="GALERIA" data-en="GALLERY">GALERIA</a></li>
+    <li><a href="contact.html" data-es="CONTACTO" data-en="CONTACT">CONTACTO</a></li>
   </ul>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-left">
+    <div>
       <div class="hero-tag" data-es="Barcelona · Autoservicio" data-en="Barcelona · Self-Service">Barcelona · Autoservicio</div>
       <h1 class="hero-title">
-        <span data-es="Ropa Limpia" data-en="Clean Clothes">Ropa Limpia</span>
-        <span data-es="para TODO" data-en="for EVERYTHING" style="font-style:normal;color:#0d1f3c;">para TODO</span>
+        <span class="blue" data-es="Ropa Limpia" data-en="Clean Clothes">Ropa Limpia</span>
+        <span data-es="para TODO" data-en="for EVERYTHING">para TODO</span>
       </h1>
-      <p class="hero-subtitle" data-es="Lavanderia autoservicio en el corazon de Barcelona. Lava, seca y recoge en 30 minutos. Abierto los 365 dias del ano." data-en="Self-service laundry in the heart of Barcelona. Wash, dry and collect in 30 minutes. Open 365 days a year.">
-        Lavanderia autoservicio en el corazon de Barcelona. Lava, seca y recoge en 30 minutos. Abierto los 365 dias del ano.
-      </p>
+      <p class="hero-sub" data-es="Lavanderia autoservicio en el corazon de Barcelona. Lava, seca y recoge en 30 minutos. Abierto los 365 dias del ano." data-en="Self-service laundry in the heart of Barcelona. Wash, dry and collect in 30 minutes. Open 365 days a year.">Lavanderia autoservicio en el corazon de Barcelona. Lava, seca y recoge en 30 minutos. Abierto los 365 dias del ano.</p>
       <div class="hero-btns">
-        <a href="https://wa.me/34620162599" target="_blank" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.855l6.124-1.605A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.027-1.381l-.36-.214-3.634.953.97-3.546-.235-.374A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        <a href="https://wa.me/34620162599" target="_blank" class="btn-dark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.855l6.124-1.605A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.027-1.381l-.36-.214-3.634.953.97-3.546-.235-.374A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
           <span data-es="WhatsApp" data-en="WhatsApp">WhatsApp</span>
         </a>
-        <a href="services.html" class="btn-outline">
+        <a href="services.html" class="btn-border">
           <span data-es="NUESTROS SERVICIOS" data-en="OUR SERVICES">NUESTROS SERVICIOS</span>
         </a>
       </div>
       <div class="hero-stats">
         <div>
-          <div class="hero-stat-num">4.9</div>
-          <div class="hero-stat-label" data-es="276+ RESENAS GOOGLE" data-en="276+ GOOGLE REVIEWS">276+ RESENAS GOOGLE</div>
+          <span class="stat-num">4.9 ★</span>
+          <span class="stat-label" data-es="276+ RESENAS GOOGLE" data-en="276+ GOOGLE REVIEWS">276+ RESENAS GOOGLE</span>
         </div>
         <div>
-          <div class="hero-stat-num">30min</div>
-          <div class="hero-stat-label" data-es="LAVADO COMPLETO" data-en="FULL WASH CYCLE">LAVADO COMPLETO</div>
+          <span class="stat-num">30 min</span>
+          <span class="stat-label" data-es="LAVADO COMPLETO" data-en="FULL WASH CYCLE">LAVADO COMPLETO</span>
         </div>
         <div>
-          <div class="hero-stat-num">365</div>
-          <div class="hero-stat-label" data-es="DIAS AL ANO" data-en="DAYS A YEAR">DIAS AL ANO</div>
+          <span class="stat-num">365</span>
+          <span class="stat-label" data-es="DIAS AL ANO" data-en="DAYS A YEAR">DIAS AL ANO</span>
         </div>
       </div>
     </div>
-    <div class="hero-right">
+    <div>
       <div class="hero-mosaic">
-        <img class="mosaic-img mosaic-tall" src="https://i.imgur.com/7cDPEH6.jpg" alt="Lavanderia Molino" />
-        <img class="mosaic-img" src="https://i.imgur.com/QacT7g4.jpg" alt="Lavanderia Molino" />
-        <img class="mosaic-img" src="https://i.imgur.com/h3qj4sB.jpg" alt="Lavanderia Molino" />
+        <img class="mosaic-img mosaic-tall" src="https://i.imgur.com/7cDPEH6.jpg" alt="Lavanderia Molino"/>
+        <img class="mosaic-img" src="https://i.imgur.com/QacT7g4.jpg" alt="Lavanderia Molino"/>
+        <img class="mosaic-img" src="https://i.imgur.com/h3qj4sB.jpg" alt="Lavanderia Molino"/>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services-section">
-  <div class="section-center">
-    <p class="section-label" data-es="NUESTROS SERVICIOS" data-en="OUR SERVICES">NUESTROS SERVICIOS</p>
-    <h2 class="section-title" data-es="Todo lo que necesitas" data-en="Everything You Need">Todo lo que necesitas</h2>
-    <div class="services-grid">
-      <a href="services.html" class="service-card">
-        <div class="service-icon">🫧</div>
-        <div class="service-name" data-es="Lavado" data-en="Washing">Lavado</div>
-        <div class="service-desc" data-es="Desde 5 euros. Tallas S, M, L, XL disponibles" data-en="From 5 euros. Sizes S, M, L, XL available">Desde 5 euros. Tallas S, M, L, XL disponibles</div>
-        <div class="service-link" data-es="VER PRECIOS" data-en="VIEW PRICES">VER PRECIOS</div>
+<!-- SERVICES -->
+<section class="sec">
+  <div class="sec-inner">
+    <span class="sec-label" data-es="NUESTROS SERVICIOS" data-en="OUR SERVICES">NUESTROS SERVICIOS</span>
+    <h2 class="sec-title" data-es="Todo lo que necesitas" data-en="Everything You Need">Todo lo que necesitas</h2>
+    <div class="cards4">
+      <a href="services.html" class="card">
+        <div class="card-icon">🫧</div>
+        <div class="card-name" data-es="Lavado" data-en="Washing">Lavado</div>
+        <div class="card-desc" data-es="Desde 5 euros. Tallas S, M, L, XL disponibles" data-en="From 5 euros. Sizes S, M, L, XL available">Desde 5 euros. Tallas S, M, L, XL disponibles</div>
+        <div class="card-link" data-es="VER PRECIOS →" data-en="VIEW PRICES →">VER PRECIOS →</div>
       </a>
-      <a href="services.html" class="service-card">
-        <div class="service-icon">💨</div>
-        <div class="service-name" data-es="Secado" data-en="Drying">Secado</div>
-        <div class="service-desc" data-es="1.50 a 2 euros por 10 min. Secado rapido y eficiente" data-en="1.50 to 2 euros per 10 min. Fast and efficient drying">1.50 a 2 euros por 10 min. Secado rapido y eficiente</div>
-        <div class="service-link" data-es="VER PRECIOS" data-en="VIEW PRICES">VER PRECIOS</div>
+      <a href="services.html" class="card">
+        <div class="card-icon">💨</div>
+        <div class="card-name" data-es="Secado" data-en="Drying">Secado</div>
+        <div class="card-desc" data-es="1.50 a 2 euros por 10 min. Rapido y eficiente" data-en="1.50 to 2 euros per 10 min. Fast and efficient">1.50 a 2 euros por 10 min. Rapido y eficiente</div>
+        <div class="card-link" data-es="VER PRECIOS →" data-en="VIEW PRICES →">VER PRECIOS →</div>
       </a>
-      <a href="services.html" class="service-card">
-        <div class="service-icon">👕</div>
-        <div class="service-name" data-es="Ropa Diaria" data-en="Daily Clothes">Ropa Diaria</div>
-        <div class="service-desc" data-es="Camisetas, pantalones, ropa interior y mas" data-en="T-shirts, trousers, underwear and more">Camisetas, pantalones, ropa interior y mas</div>
-        <div class="service-link" data-es="VER PRECIOS" data-en="VIEW PRICES">VER PRECIOS</div>
+      <a href="services.html" class="card">
+        <div class="card-icon">👕</div>
+        <div class="card-name" data-es="Ropa Diaria" data-en="Daily Clothes">Ropa Diaria</div>
+        <div class="card-desc" data-es="Camisetas, pantalones, ropa interior y mas" data-en="T-shirts, trousers, underwear and more">Camisetas, pantalones, ropa interior y mas</div>
+        <div class="card-link" data-es="VER PRECIOS →" data-en="VIEW PRICES →">VER PRECIOS →</div>
       </a>
-      <a href="services.html" class="service-card">
-        <div class="service-icon">🛏</div>
-        <div class="service-name" data-es="Ropa de Cama" data-en="Bedding">Ropa de Cama</div>
-        <div class="service-desc" data-es="Sabanas, toallas, mantas y edredones" data-en="Sheets, towels, blankets and duvets">Sabanas, toallas, mantas y edredones</div>
-        <div class="service-link" data-es="VER PRECIOS" data-en="VIEW PRICES">VER PRECIOS</div>
+      <a href="services.html" class="card">
+        <div class="card-icon">🛏</div>
+        <div class="card-name" data-es="Ropa de Cama" data-en="Bedding">Ropa de Cama</div>
+        <div class="card-desc" data-es="Sabanas, toallas, mantas y edredones" data-en="Sheets, towels, blankets and duvets">Sabanas, toallas, mantas y edredones</div>
+        <div class="card-link" data-es="VER PRECIOS →" data-en="VIEW PRICES →">VER PRECIOS →</div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="hiw-section">
-  <div class="section-center">
-    <p class="section-label" data-es="COMO FUNCIONA" data-en="HOW IT WORKS">COMO FUNCIONA</p>
-    <h2 class="section-title" data-es="Lavar nunca fue tan facil" data-en="Washing Has Never Been Easier">Lavar nunca fue tan facil</h2>
-    <div class="hiw-grid">
-      <div class="hiw-step">
-        <div class="hiw-num">1</div>
-        <div class="hiw-icon">🚶</div>
-        <div class="hiw-title" data-es="LLEGA" data-en="ARRIVE">LLEGA</div>
-        <div class="hiw-desc" data-es="Ven a Avinguda del Paralel 81. Abierto de 9h a 22h, todos los dias del ano." data-en="Come to Avinguda del Paralel 81. Open 9am to 10pm, every day of the year.">Ven a Avinguda del Paralel 81. Abierto de 9h a 22h, todos los dias del ano.</div>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">2</div>
-        <div class="hiw-icon">🧺</div>
-        <div class="hiw-title" data-es="CARGA" data-en="LOAD">CARGA</div>
-        <div class="hiw-desc" data-es="Elige tu lavadora segun el tamano de la colada. S, M, L o XL." data-en="Choose your machine based on load size. S, M, L or XL.">Elige tu lavadora segun el tamano de la colada. S, M, L o XL.</div>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">3</div>
-        <div class="hiw-icon">⚡</div>
-        <div class="hiw-title" data-es="LAVA" data-en="WASH">LAVA</div>
-        <div class="hiw-desc" data-es="El ciclo completo dura unos 30 minutos. Puedes esperar o dar una vuelta." data-en="The full cycle takes about 30 minutes. Wait or explore the neighbourhood.">El ciclo completo dura unos 30 minutos. Puedes esperar o dar una vuelta.</div>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">4</div>
-        <div class="hiw-icon">✅</div>
-        <div class="hiw-title" data-es="RECOGE" data-en="COLLECT">RECOGE</div>
-        <div class="hiw-desc" data-es="Recoge tu ropa limpia. Paga con tarjeta o efectivo al mismo precio." data-en="Collect your clean laundry. Pay by card or cash at the same price.">Recoge tu ropa limpia. Paga con tarjeta o efectivo al mismo precio.</div>
-      </div>
+<!-- HOW IT WORKS -->
+<section class="hiw">
+  <span class="sec-label" data-es="COMO FUNCIONA" data-en="HOW IT WORKS">COMO FUNCIONA</span>
+  <h2 class="sec-title" data-es="Lavar nunca fue tan facil" data-en="Washing Has Never Been Easier">Lavar nunca fue tan facil</h2>
+  <div class="hiw-grid">
+    <div class="hiw-step">
+      <div class="hiw-num">1</div>
+      <div class="hiw-icon">🚶</div>
+      <div class="hiw-name" data-es="LLEGA" data-en="ARRIVE">LLEGA</div>
+      <div class="hiw-desc" data-es="Ven a Avinguda del Paralel 81. Abierto de 9h a 22h todos los dias del ano." data-en="Come to Avinguda del Paralel 81. Open 9am to 10pm every day of the year.">Ven a Avinguda del Paralel 81. Abierto de 9h a 22h todos los dias del ano.</div>
+    </div>
+    <div class="hiw-step">
+      <div class="hiw-num">2</div>
+      <div class="hiw-icon">🧺</div>
+      <div class="hiw-name" data-es="CARGA" data-en="LOAD">CARGA</div>
+      <div class="hiw-desc" data-es="Elige tu lavadora segun el tamano de la colada. S, M, L o XL." data-en="Choose your machine based on load size. S, M, L or XL.">Elige tu lavadora segun el tamano de la colada. S, M, L o XL.</div>
+    </div>
+    <div class="hiw-step">
+      <div class="hiw-num">3</div>
+      <div class="hiw-icon">⚡</div>
+      <div class="hiw-name" data-es="LAVA" data-en="WASH">LAVA</div>
+      <div class="hiw-desc" data-es="El ciclo completo dura unos 30 minutos. Puedes esperar o explorar el barrio." data-en="The full cycle takes about 30 minutes. Wait or explore the neighbourhood.">El ciclo completo dura unos 30 minutos. Puedes esperar o explorar el barrio.</div>
+    </div>
+    <div class="hiw-step">
+      <div class="hiw-num">4</div>
+      <div class="hiw-icon">✅</div>
+      <div class="hiw-name" data-es="RECOGE" data-en="COLLECT">RECOGE</div>
+      <div class="hiw-desc" data-es="Recoge tu ropa limpia. Paga con tarjeta o efectivo al mismo precio." data-en="Collect your clean laundry. Pay by card or cash at the same price.">Recoge tu ropa limpia. Paga con tarjeta o efectivo al mismo precio.</div>
     </div>
   </div>
 </section>
 
-<section class="testi-section">
-  <div class="section-center">
-    <p class="section-label" data-es="RESENAS GOOGLE" data-en="GOOGLE REVIEWS">RESENAS GOOGLE</p>
-    <h2 class="section-title" data-es="Lo que dicen nuestros clientes" data-en="What Our Customers Say">Lo que dicen nuestros clientes</h2>
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="sec-inner">
+    <span class="sec-label" data-es="RESENAS GOOGLE" data-en="GOOGLE REVIEWS">RESENAS GOOGLE</span>
+    <h2 class="sec-title" data-es="Lo que dicen nuestros clientes" data-en="What Our Customers Say">Lo que dicen nuestros clientes</h2>
     <div class="testi-grid">
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-es="Muy buena lavanderia, esta limpia, las maquinas funcionan bien y el precio es razonable. La recomiendo." data-en="Very good laundry, it is clean, the machines work well and the price is reasonable. I recommend it.">Muy buena lavanderia, esta limpia, las maquinas funcionan bien y el precio es razonable. La recomiendo.</p>
+        <p class="testi-text" data-es="Muy buena lavanderia, esta limpia, las maquinas funcionan bien y el precio es razonable. La recomiendo." data-en="Very good laundry, clean, machines work well and the price is reasonable. I recommend it.">Muy buena lavanderia, esta limpia, las maquinas funcionan bien y el precio es razonable. La recomiendo.</p>
         <div class="testi-author">Cliente Google</div>
         <div class="testi-via" data-es="Resena verificada - Google" data-en="Verified review - Google">Resena verificada - Google</div>
       </div>
@@ -336,54 +307,56 @@
   </div>
 </section>
 
-<section class="findus-section">
+<!-- FIND US -->
+<section class="findus">
   <div class="findus-inner">
-    <div class="findus-info">
-      <p class="section-label" data-es="ENCUENTRANOS" data-en="FIND US">ENCUENTRANOS</p>
-      <h2 class="section-title" data-es="Visitanos en Barcelona" data-en="Visit Us in Barcelona">Visitanos en Barcelona</h2>
-      <div class="findus-detail">
-        <div class="findus-detail-icon">📍</div>
-        <div class="findus-detail-text">
+    <div>
+      <span class="sec-label" data-es="ENCUENTRANOS" data-en="FIND US">ENCUENTRANOS</span>
+      <h2 class="sec-title" data-es="Visitanos en Barcelona" data-en="Visit Us in Barcelona">Visitanos en Barcelona</h2>
+      <div class="detail">
+        <div class="detail-icon">📍</div>
+        <div class="detail-text">
           <strong data-es="DIRECCION" data-en="ADDRESS">DIRECCION</strong>
           Avinguda del Paralel, 81, Sants-Montjuic, 08004 Barcelona
         </div>
       </div>
-      <div class="findus-detail">
-        <div class="findus-detail-icon">🕐</div>
-        <div class="findus-detail-text">
+      <div class="detail">
+        <div class="detail-icon">🕐</div>
+        <div class="detail-text">
           <strong data-es="HORARIO" data-en="HOURS">HORARIO</strong>
           <span data-es="Todos los dias: 9h a 22h" data-en="Every day: 9am to 10pm">Todos los dias: 9h a 22h</span>
         </div>
       </div>
-      <div class="findus-detail">
-        <div class="findus-detail-icon">📞</div>
-        <div class="findus-detail-text">
+      <div class="detail">
+        <div class="detail-icon">📞</div>
+        <div class="detail-text">
           <strong data-es="TELEFONO Y WHATSAPP" data-en="PHONE AND WHATSAPP">TELEFONO Y WHATSAPP</strong>
           +34 620 16 25 99
         </div>
       </div>
-      <div class="findus-detail">
-        <div class="findus-detail-icon">💳</div>
-        <div class="findus-detail-text">
+      <div class="detail">
+        <div class="detail-icon">💳</div>
+        <div class="detail-text">
           <strong data-es="PAGO" data-en="PAYMENT">PAGO</strong>
           <span data-es="Tarjeta y efectivo. Mismo precio" data-en="Card and cash. Same price">Tarjeta y efectivo. Mismo precio</span>
         </div>
       </div>
     </div>
-    <div class="map-wrap">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7!2d2.1608!3d41.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4987b7b7b7b7b%3A0x7b7b7b7b7b7b7b7b!2sAvinguda+del+Paralel%2C+81%2C+08004+Barcelona!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.846013645374!2d2.158292315571619!3d41.37467760000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4991fb892c935%3A0x631f48b4e9ce9d33!2sAvinguda%20del%20Paral%C2%B7lel%2C%2081%2C%2008004%20Barcelona!5e0!3m2!1sen!2ses!4v1620000000000!5m2!1sen!2ses" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="logo.jpg" alt="Lavanderia Molino" />
-      <div class="footer-brand-name">Lavanderia Molino</div>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.jpg" alt="Lavanderia Molino"/>
+      <div class="footer-logo-name">Lavanderia Molino</div>
       <p data-es="Lavanderia autoservicio en Barcelona. Abierto 365 dias al ano de 9h a 22h." data-en="Self-service laundry in Barcelona. Open 365 days a year from 9am to 10pm.">Lavanderia autoservicio en Barcelona. Abierto 365 dias al ano de 9h a 22h.</p>
     </div>
-    <div class="footer-col">
+    <div class="fcol">
       <h4 data-es="PAGINAS" data-en="PAGES">PAGINAS</h4>
       <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
       <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
@@ -391,17 +364,17 @@
       <a href="gallery.html" data-es="Galeria" data-en="Gallery">Galeria</a>
       <a href="contact.html" data-es="Contacto" data-en="Contact">Contacto</a>
     </div>
-    <div class="footer-col">
+    <div class="fcol">
       <h4 data-es="HORARIO" data-en="HOURS">HORARIO</h4>
       <p data-es="Lunes a Domingo" data-en="Monday to Sunday">Lunes a Domingo</p>
       <p>9:00 - 22:00</p>
       <p data-es="365 dias al ano" data-en="365 days a year">365 dias al ano</p>
     </div>
-    <div class="footer-col">
+    <div class="fcol">
       <h4 data-es="CONTACTO" data-en="CONTACT">CONTACTO</h4>
       <a href="tel:+34620162599">+34 620 16 25 99</a>
       <a href="https://wa.me/34620162599" target="_blank">WhatsApp</a>
-      <p>Avinguda del Paralel, 81, 08004 Barcelona</p>
+      <p>Avinguda del Paralel, 81<br/>08004 Barcelona</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -410,32 +383,18 @@
   </div>
 </footer>
 
-<a href="https://wa.me/34620162599" target="_blank" class="wa-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.855l6.124-1.605A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.027-1.381l-.36-.214-3.634.953.97-3.546-.235-.374A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+<!-- WHATSAPP -->
+<a href="https://wa.me/34620162599" target="_blank" class="wa">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.855l6.124-1.605A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.027-1.381l-.36-.214-3.634.953.97-3.546-.235-.374A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
 </a>
 
 <script src="shared.js"></script>
 <script>
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
-  hamburger.addEventListener("click", () => {
-    mobileMenu.style.display = mobileMenu.style.display === "none" ? "block" : "none";
-  });
-
-  // Reveal animation observer
-  const revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
-  if (revealEls.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => observer.observe(el));
-  }
-
-  // Hero elements visible immediately
-  document.querySelectorAll(".hero *").forEach(el => {
-    el.style.opacity = "1";
-    el.style.transform = "none";
-  });
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+hamburger.addEventListener("click", () => {
+  mobileMenu.style.display = mobileMenu.style.display === "none" ? "block" : "none";
+});
 </script>
 </body>
 </html>
