@@ -45,119 +45,87 @@ body { background: var(--bg); }
 
 /* ── Hero ── */
 #hero {
-  min-height: 85vh; position: relative;
-  display: flex; align-items: center;
-  background: var(--navy); overflow: hidden;
+  background: var(--bg);
+  padding: 60px 5vw 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: 80vh;
 }
-.hero-video-wrap img.hero-slide {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  opacity: 0; transition: opacity 1.4s ease;
-}
-.hero-video-wrap img.hero-slide.active { opacity: 1; }
-.hero-video-wrap video.hero-slide {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  opacity: 0; transition: opacity 1.4s ease;
-}
-.hero-video-wrap video.hero-slide.active { opacity: 1; }
-#hero-slide-1 { object-position: 35% center; }
-#hero-slide-3 { object-position: 65% center; }
-
-/* Floating card overlay */
-.hero-floating-card {
-  position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
-  width: 380px; background: var(--bg);
-  border-radius: 24px; padding: 40px 36px;
-  border: 1px solid var(--border);
-  box-shadow: 0 24px 64px rgba(13,31,60,0.25);
-  z-index: 3;
-}
+.hero-left { display: flex; flex-direction: column; }
 .hero-card-tag {
   font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 14px;
+  color: var(--accent); margin-bottom: 16px;
   display: flex; align-items: center; gap: 8px;
 }
-.hero-card-tag::before { content:""; display:block; width:16px; height:1px; background:var(--accent); }
+.hero-card-tag::before { content:""; display:block; width:16px; height:1.5px; background:var(--accent); }
 .hero-card-title {
   font-family: "Bodoni Moda", serif;
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-  font-weight: 500; color: var(--navy); line-height: 1.1; margin-bottom: 12px;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 500; color: var(--navy); line-height: 1.12; margin-bottom: 14px;
 }
 .hero-card-title span { color: var(--accent); }
 .hero-card-desc {
-  font-size: 0.84rem; font-weight: 300; color: var(--muted-t);
-  line-height: 1.75; margin-bottom: 24px;
+  font-size: 0.88rem; font-weight: 300; color: var(--muted-t);
+  line-height: 1.75; margin-bottom: 28px; max-width: 420px;
 }
-.hero-card-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero-card-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .hero-card-stats {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 12px; padding-top: 20px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 .hero-stat-item {
-  background: var(--card); border-radius: 12px; padding: 12px 14px;
-  border: 1px solid var(--border);
+  background: var(--card); border-radius: 12px; padding: 14px 10px;
+  border: 1px solid var(--border); text-align: center;
 }
 .hero-stat-num {
-  font-family: "Bodoni Moda", serif; font-size: 1.6rem; font-weight: 500;
+  font-family: "Bodoni Moda", serif; font-size: 1.5rem; font-weight: 500;
   color: var(--navy); line-height: 1;
 }
 .hero-stat-label {
-  font-size: 0.68rem; font-weight: 400; color: var(--muted-t);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px;
+  font-size: 0.62rem; font-weight: 400; color: var(--muted-t);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
 }
-
-/* Overlay gradient — left dark, right lighter for card readability */
-.hero-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(
-    to right,
-    rgba(8,15,30,0.65) 0%,
-    rgba(8,15,30,0.4) 50%,
-    rgba(245,242,232,0.15) 100%
-  );
+.hero-right { display: flex; flex-direction: column; gap: 12px; }
+.hero-video-box {
+  border-radius: 20px; overflow: hidden;
+  aspect-ratio: 4/3; position: relative;
+  background: var(--navy);
+  box-shadow: 0 20px 60px rgba(13,31,60,0.18);
 }
-
+.hero-video-box video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hero-video-badge {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  background: var(--accent); color: #fff;
+  font-size: 0.65rem; font-weight: 500; padding: 4px 10px;
+  border-radius: 100px;
+}
+.hero-video-muted {
+  position: absolute; bottom: 14px; left: 14px; z-index: 3;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.75); font-size: 0.65rem;
+  padding: 4px 10px; border-radius: 6px;
+}
+.hero-info-chips {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 10px;
+}
+.hero-chip {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 12px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 500; color: var(--navy);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.hero-chip:hover { border-color: var(--navy); transform: translateY(-2px); }
+.hero-chip svg { color: var(--accent); flex-shrink: 0; }
 @media (max-width: 900px) {
-  #hero {
-    min-height: auto !important;
-    flex-direction: column;
-  }
-  .hero-video-wrap {
-    position: relative !important;
-    height: 55vw !important;
-    min-height: 260px;
-    width: 100%;
-    background: transparent !important;
-  }
-  .hero-video-wrap img.hero-slide {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    opacity: 0;
-  }
-  .hero-video-wrap img.hero-slide.active { opacity: 1 !important; }
-  .hero-overlay { position: absolute !important; }
-  .video-dots { position: absolute !important; bottom: 12px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 5 !important; }
-  .hero-floating-card {
-    position: relative !important;
-    right: auto !important; top: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    border-radius: 0 !important;
-    padding: 32px 5vw !important;
-    box-shadow: none !important;
-    border: none !important;
-    border-top: 1px solid var(--border) !important;
-  }
-  .hero-card-title { font-size: 2rem !important; }
-  .hero-card-stats { grid-template-columns: repeat(2,1fr) !important; }
-  .hero-scroll { display: none !important; }
+  #hero { grid-template-columns: 1fr; padding: 36px 5vw 32px; min-height: auto; gap: 32px; }
+  .hero-card-stats { grid-template-columns: repeat(2,1fr); }
+  .hero-card-title { font-size: 2rem; }
 }
 
 /* ── USP Strip ── */
@@ -413,26 +381,12 @@ body.lang-en [data-es] { display: none !important; }
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-video-wrap" id="videoWrap">
-    <img class="hero-slide active" src="https://i.imgur.com/7cDPEH6.jpg" alt="Lavanderia interior"/>
-    <img class="hero-slide" src="https://i.imgur.com/QacT7g4.jpg" alt="Real shop machines"/>
-    <img class="hero-slide" src="https://i.imgur.com/h3qj4sB.jpg" alt="Staff cleaning"/>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="video-label" id="videoLabel"></div>
-  <div class="video-dots" id="videoDots">
-    <div class="video-dot active" onclick="switchVideo(0)"></div>
-    <div class="video-dot" onclick="switchVideo(1)"></div>
-    <div class="video-dot" onclick="switchVideo(2)"></div>
-    <div class="video-dot" onclick="switchVideo(3)"></div>
-  </div>
-  <!-- Floating card -->
-  <div class="hero-floating-card">
+  <div class="hero-left">
     <div class="hero-card-tag">
       <span data-es>Autoservicio · Bugaderia Molino · Barcelona</span>
       <span data-en>Self-service Laundry · Barcelona</span>
     </div>
-    <h1 class="hero-card-title split-text">
+    <h1 class="hero-card-title">
       <span data-es>Tu ropa lista en <span>30 minutos</span></span>
       <span data-en>Your laundry ready in <span>30 minutes</span></span>
     </h1>
@@ -452,7 +406,7 @@ body.lang-en [data-es] { display: none !important; }
     </div>
     <div class="hero-card-stats">
       <div class="hero-stat-item">
-        <div class="hero-stat-num">30 <span style="font-size:1rem;color:var(--accent);">min</span></div>
+        <div class="hero-stat-num">30 <span style="font-size:0.9rem;color:var(--accent);">min</span></div>
         <div class="hero-stat-label"><span data-es>Ropa lista</span><span data-en>Laundry ready</span></div>
       </div>
       <div class="hero-stat-item">
@@ -460,19 +414,37 @@ body.lang-en [data-es] { display: none !important; }
         <div class="hero-stat-label"><span data-es>Días al año</span><span data-en>Days a year</span></div>
       </div>
       <div class="hero-stat-item">
-        <div class="hero-stat-num">4.9 <span style="font-size:1rem;">⭐</span></div>
+        <div class="hero-stat-num">4.9 <span style="font-size:0.9rem;">⭐</span></div>
         <div class="hero-stat-label">Google Rating</div>
       </div>
       <div class="hero-stat-item">
-        <div class="hero-stat-num">276<span style="font-size:1rem;color:var(--accent);">+</span></div>
+        <div class="hero-stat-num">276<span style="font-size:0.9rem;color:var(--accent);">+</span></div>
         <div class="hero-stat-label"><span data-es>Reseñas</span><span data-en>Reviews</span></div>
       </div>
     </div>
   </div>
-
-  <div class="hero-scroll" style="z-index:3;">
-    <span><span data-es>Descubrir</span><span data-en>Discover</span></span>
-    <div class="scroll-line"></div>
+  <div class="hero-right">
+    <div class="hero-video-box">
+      <video autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/dl9qpcfe1/video/upload/v1779135843/vedio_ddv0ge.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-badge">▶ Autoplay</div>
+      <div class="hero-video-muted">🔇 Muted · Loop</div>
+    </div>
+    <div class="hero-info-chips">
+      <div class="hero-chip">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+        <span data-es>Autoservicio</span><span data-en>Self-service</span>
+      </div>
+      <div class="hero-chip">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        9h – 22h
+      </div>
+      <div class="hero-chip">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Card + Cash
+      </div>
+    </div>
   </div>
 </section>
 
@@ -739,42 +711,7 @@ function animateWords() {
   });
 }
 
-/* ── Multi-image switcher ── */
-const videos = document.querySelectorAll("#videoWrap .hero-slide");
-const dots   = document.querySelectorAll(".video-dot");
-const labels = [
-  { es:"Lavandería Molino",   en:"Lavandería Molino"    },
-  { es:"Lavado profesional",  en:"Professional wash"    },
-  { es:"Siempre limpio",      en:"Always clean"         },
-  { es:"Lavandería Molino",   en:"Lavandería Molino"    },
-];
-let cur = 0;
-
-function switchVideo(idx) {
-  videos[cur].classList.remove("active");
-  if (videos[cur].tagName === 'VIDEO') videos[cur].pause();
-  dots[cur].classList.remove("active");
-  cur = idx;
-  videos[cur].classList.add("active");
-  if (videos[cur].tagName === 'VIDEO') videos[cur].play();
-  dots[cur].classList.add("active");
-  const lbl  = document.getElementById("videoLabel");
-  const lang = document.body.classList.contains("lang-en") ? "en" : "es";
-  lbl.style.opacity = "0";
-  setTimeout(() => { lbl.textContent = labels[cur][lang]; lbl.style.opacity = "1"; lbl.style.transition = "opacity 0.5s"; }, 300);
-}
-setTimeout(() => switchVideo(0), 100);
-let timer = setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
-
-document.querySelectorAll("#videoWrap video").forEach(v => {
-  v.addEventListener("play", () => {
-    clearInterval(timer);
-  });
-  v.addEventListener("ended", () => {
-    switchVideo((cur + 1) % videos.length);
-    timer = setInterval(() => switchVideo((cur + 1) % videos.length), 6000);
-  });
-});
+/* ── Hero video autoplay handled by HTML attributes ── */
 
 /* ── Parallax ── */
 const pImg = document.getElementById("parallaxImg");
