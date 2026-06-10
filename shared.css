@@ -702,3 +702,19 @@ body.lang-en span[data-es] { display: none; }
 .btn-primary span, .btn-outline-dark span {
   display: inline !important;
 }
+
+/* Fix: show span inside buttons regardless of lang */
+.btn-primary span[data-es],
+.btn-primary span[data-en],
+.btn-outline-dark span[data-es],
+.btn-outline-dark span[data-en] {
+  display: inline !important;
+}
+body.lang-en .btn-primary span[data-es],
+body.lang-en .btn-outline-dark span[data-es] {
+  display: none !important;
+}
+body:not(.lang-en) .btn-primary span[data-en],
+body:not(.lang-en) .btn-outline-dark span[data-en] {
+  display: none !important;
+}
