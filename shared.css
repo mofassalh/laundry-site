@@ -674,3 +674,11 @@ body.lang-en span[data-es] { display: none; }
     padding-top: 0 !important;
   }
 }
+
+/* Remove gap between navbar and hero image on mobile */
+@media (max-width: 768px) {
+  .hero-wrap, #videoWrap, .hero-section, .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
