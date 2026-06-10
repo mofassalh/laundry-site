@@ -724,3 +724,8 @@ body:not(.lang-en) .btn-outline-dark span[data-en] {
 .btn-text-en { display: none !important; }
 body.lang-en .btn-text-es { display: none !important; }
 body.lang-en .btn-text-en { display: inline !important; }
+
+/* Fix button text color */
+.btn-primary, .btn-primary span, .btn-primary * {
+  color: white !important;
+}
