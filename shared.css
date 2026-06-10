@@ -768,3 +768,15 @@ body.lang-en .btn-text-en { display: inline !important; }
   top: unset !important;
   left: unset !important;
 }
+
+/* WhatsApp icon center */
+#wa-float {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#wa-float svg {
+  position: static !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
