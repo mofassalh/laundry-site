@@ -189,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
 /* ============================================================
    CMS — Load settings from Supabase
    ============================================================ */
@@ -206,73 +207,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = {};
     rows.forEach(r => { s[r.key] = r.value; });
 
-    // Colors
     const root = document.documentElement;
-    if (s.accent_color) root.style.setProperty('--sky-500', s.accent_color);
-    if (s.navy_color)   root.style.setProperty('--charcoal', s.navy_color);
-    if (s.bg_color)     root.style.setProperty('--white', s.bg_color);
-    if (s.bg_color)     document.body.style.background = s.bg_color;
 
-    // Hero title
-    if (s.hero_title) {
-      document.querySelectorAll('.hero-title, [data-cms="hero_title"]').forEach(el => {
-        el.textContent = s.hero_title;
-      });
-    }
-    // Hero subtitle
-    if (s.hero_subtitle) {
-      document.querySelectorAll('.hero-subtitle, [data-cms="hero_subtitle"]').forEach(el => {
-        el.textContent = s.hero_subtitle;
-      });
-    }
-    // Hero desc
-    if (s.hero_desc) {
-      document.querySelectorAll('.hero-desc, [data-cms="hero_desc"]').forEach(el => {
-        el.textContent = s.hero_desc;
-      });
-    }
-    // Phone
-    if (s.phone) {
-      document.querySelectorAll('[data-cms="phone"]').forEach(el => {
-        el.textContent = s.phone;
-        if (el.tagName === 'A') el.href = 'tel:' + s.phone.replace(/\s/g,'');
-      });
-    }
-    // Hours
-    if (s.hours) {
-      document.querySelectorAll('[data-cms="hours"]').forEach(el => {
-        el.textContent = s.hours;
-      });
-    }
-    // Address
-    if (s.address) {
-      document.querySelectorAll('[data-cms="address"]').forEach(el => {
-        el.textContent = s.address;
-      });
-    }
-    // Hero images
-    if (s.hero_img1) {
-      document.querySelectorAll('[data-cms="hero_img1"]').forEach(el => el.src = s.hero_img1);
-    }
-    if (s.hero_img2) {
-      document.querySelectorAll('[data-cms="hero_img2"]').forEach(el => el.src = s.hero_img2);
-    }
-    if (s.hero_img3) {
-      document.querySelectorAll('[data-cms="hero_img3"]').forEach(el => el.src = s.hero_img3);
-    }
-    // Prices
-    if (s.price_s) document.querySelectorAll('[data-cms="price_s"]').forEach(el => el.textContent = s.price_s + ' EUR');
-    if (s.price_m) document.querySelectorAll('[data-cms="price_m"]').forEach(el => el.textContent = s.price_m + ' EUR');
-    if (s.price_l) document.querySelectorAll('[data-cms="price_l"]').forEach(el => el.textContent = s.price_l + ' EUR');
-    if (s.price_xl) document.querySelectorAll('[data-cms="price_xl"]').forEach(el => el.textContent = s.price_xl + ' EUR');
-    if (s.price_dryer) document.querySelectorAll('[data-cms="price_dryer"]').forEach(el => el.textContent = s.price_dryer + ' EUR');
-
-    // Background color all sections
+    // Background
     if (s.bg_color) {
-      document.querySelectorAll('section, .stats-strip, .services-section, footer').forEach(el => {
-        el.style.background = s.bg_color;
-      });
+      root.style.setProperty('--white', s.bg_color);
+      document.body.style.background = s.bg_color;
+      document.querySelectorAll('section, main, .stats-strip').forEach(el => el.style.background = s.bg_color);
     }
+    // Accent
+    if (s.accent_color) {
+      root.style.setProperty('--sky-500', s.accent_color);
+      root.style.setProperty('--sky-400', s.accent_color);
+    }
+    // Navbar
+    if (s.navbar_color) {
+      const nav = document.getElementById('navbar');
+      if (nav) nav.style.background = s.navbar_color;
+    }
+    // Navy
+    if (s.navy_color) root.style.setProperty('--charcoal', s.navy_color);
+    // Text colors
+    if (s.text_color) root.style.setProperty('--charcoal', s.text_color);
+    if (s.text_secondary) root.style.setProperty('--slate', s.text_secondary);
+    if (s.text_muted) root.style.setProperty('--muted', s.text_muted);
+    // Nav hover
+    if (s.nav_hover_color) root.style.setProperty('--sky-300', s.nav_hover_color);
+
+    // Hero text
+    if (s.hero_title) document.querySelectorAll('[data-cms="hero_title"]').forEach(el => el.textContent = s.hero_title);
+    if (s.hero_subtitle) document.querySelectorAll('[data-cms="hero_subtitle"]').forEach(el => el.textContent = s.hero_subtitle);
+    if (s.hero_desc) document.querySelectorAll('[data-cms="hero_desc"]').forEach(el => el.textContent = s.hero_desc);
+
+    // Contact
+    if (s.phone) document.querySelectorAll('[data-cms="phone"]').forEach(el => { el.textContent = s.phone; if(el.tagName==='A') el.href='tel:'+s.phone.replace(/\s/g,''); });
+    if (s.hours) document.querySelectorAll('[data-cms="hours"]').forEach(el => el.textContent = s.hours);
+    if (s.address) document.querySelectorAll('[data-cms="address"]').forEach(el => el.textContent = s.address);
+
+    // Images
+    if (s.hero_img1) document.querySelectorAll('[data-cms="hero_img1"]').forEach(el => el.src = s.hero_img1);
+    if (s.hero_img2) document.querySelectorAll('[data-cms="hero_img2"]').forEach(el => el.src = s.hero_img2);
+    if (s.hero_img3) document.querySelectorAll('[data-cms="hero_img3"]').forEach(el => el.src = s.hero_img3);
+
+    // Prices
+    if (s.price_s) document.querySelectorAll('[data-cms="price_s"]').forEach(el => el.textContent = s.price_s);
+    if (s.price_m) document.querySelectorAll('[data-cms="price_m"]').forEach(el => el.textContent = s.price_m);
+    if (s.price_l) document.querySelectorAll('[data-cms="price_l"]').forEach(el => el.textContent = s.price_l);
+    if (s.price_xl) document.querySelectorAll('[data-cms="price_xl"]').forEach(el => el.textContent = s.price_xl);
+    if (s.price_dryer) document.querySelectorAll('[data-cms="price_dryer"]').forEach(el => el.textContent = s.price_dryer);
 
   } catch(e) {
     console.log('CMS load failed:', e);
