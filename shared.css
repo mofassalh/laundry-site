@@ -682,3 +682,9 @@ body.lang-en span[data-es] { display: none; }
     padding-top: 0 !important;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-video-wrap {
+    margin-top: -1px !important;
+  }
+}
