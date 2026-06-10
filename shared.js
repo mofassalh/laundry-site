@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
 /* ============================================================
    CMS — Load settings from Supabase
    ============================================================ */
@@ -189,44 +190,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = {};
     rows.forEach(r => { s[r.key] = r.value; });
     const root = document.documentElement;
+    const head = document.head;
 
-    // Background
-    if (s.bg_color) {
-      root.style.setProperty('--white', s.bg_color);
-      document.body.style.background = s.bg_color;
-      document.querySelectorAll('section, main, header, footer, .stats-strip, .services-section, .hiw-section, .testimonials-section, .findus-section').forEach(el => {
-        el.style.background = s.bg_color;
-      });
-    }
-    // Accent color
-    if (s.accent_color) {
-      root.style.setProperty('--sky-500', s.accent_color);
-      root.style.setProperty('--sky-400', s.accent_color);
-      root.style.setProperty('--sky-600', s.accent_color);
-    }
-    // Navbar
-    if (s.navbar_color) {
-      const nav = document.getElementById('navbar');
-      if (nav) nav.style.background = s.navbar_color;
-      const nav2 = document.querySelector('nav');
-      if (nav2) nav2.style.background = s.navbar_color;
-    }
-    // Navy
-    if (s.navy_color) {
-      root.style.setProperty('--charcoal', s.navy_color);
-    }
-    // Text colors
-    if (s.text_color) root.style.setProperty('--charcoal', s.text_color);
-    if (s.text_secondary) root.style.setProperty('--slate', s.text_secondary);
-    if (s.text_muted) root.style.setProperty('--muted', s.text_muted);
-    // Nav hover
-    if (s.nav_hover_color) root.style.setProperty('--sky-300', s.nav_hover_color);
-    // Scrollbar
-    if (s.scrollbar_color) {
-      const style = document.createElement('style');
-      style.textContent = '::-webkit-scrollbar-thumb { background: ' + s.scrollbar_color + ' !important; }';
-      document.head.appendChild(style);
-    }
+    // Inject dynamic CSS for everything
+    const style = document.createElement('style');
+    let css = ':root {';
+    if (s.bg_color)        css += '--white:' + s.bg_color + ';';
+    if (s.accent_color)    css += '--sky-500:' + s.accent_color + ';--sky-400:' + s.accent_color + ';--sky-600:' + s.accent_color + ';';
+    if (s.navy_color)      css += '--charcoal:' + s.navy_color + ';';
+    if (s.text_color)      css += '--charcoal:' + s.text_color + ';';
+    if (s.text_secondary)  css += '--slate:' + s.text_secondary + ';';
+    if (s.text_muted)      css += '--muted:' + s.text_muted + ';';
+    if (s.nav_hover_color) css += '--sky-300:' + s.nav_hover_color + ';';
+    css += '}';
+    if (s.bg_color) css += 'body, section, main, header, footer, .stats-strip, .page-hero { background-color:' + s.bg_color + ' !important; }';
+    if (s.accent_color) css += 'a, .nav-links a.active, .nav-links a:hover { color:' + s.accent_color + ' !important; } .btn-primary, .nav-cta, .lang-btn.active { background:' + s.accent_color + ' !important; }';
+    if (s.navbar_color) css += '#navbar, nav { background:' + s.navbar_color + ' !important; }';
+    if (s.scrollbar_color) css += '::-webkit-scrollbar-thumb { background:' + s.scrollbar_color + ' !important; }';
+    style.textContent = css;
+    head.appendChild(style);
+
   } catch(e) {
     console.log('CMS error:', e);
   }
