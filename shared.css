@@ -646,3 +646,9 @@ body.lang-en span[data-es] { display: none; }
   .lang-switcher { display: flex !important; }
   .nav-cta { display: none !important; }
 }
+
+/* Mobile: nav logo one line */
+@media (max-width: 768px) {
+  .nav-logo { font-size: 1.2rem !important; white-space: nowrap; }
+  #navbar { padding: 12px 4vw !important; }
+}
