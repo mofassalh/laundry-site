@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (s.bg_color) css += 'body, section, main, header, footer, .stats-strip, .page-hero { background-color:' + s.bg_color + ' !important; }';
     if (s.accent_color) css += 'a, .nav-links a.active, .nav-links a:hover { color:' + s.accent_color + ' !important; } .btn-primary, .nav-cta, .lang-btn.active { background:' + s.accent_color + ' !important; }';
     if (s.navbar_color) css += '#navbar, nav { background:' + s.navbar_color + ' !important; }';
+    if (s.scrollbar_color) css += '--scrollbar:' + s.scrollbar_color + ';';
     if (s.scrollbar_color) css += '::-webkit-scrollbar-thumb { background:' + s.scrollbar_color + ' !important; }';
     if (s.footer_color) css += 'footer, .footer, #footer { background:' + s.footer_color + ' !important; }';
     style.textContent = css;
