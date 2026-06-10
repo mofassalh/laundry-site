@@ -13,9 +13,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f3c;color:#fff;min-height:1
 .login-box p{color:#94a3b8;font-size:0.9rem;margin-bottom:2rem;}
 .login-box input{width:100%;padding:12px 16px;border-radius:8px;border:1px solid #2d4a6e;background:#0d1f3c;color:#fff;font-size:1rem;margin-bottom:1rem;}
 .login-box button{width:100%;padding:12px;background:#0ea5e9;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;}
-.login-box button:hover{background:#0284c7;}
 .error{color:#f87171;font-size:0.85rem;margin-top:0.5rem;}
-
 .admin{display:none;}
 .topbar{background:#1a2f4e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2d4a6e;}
 .topbar h1{font-size:1.2rem;}
@@ -27,26 +25,23 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f3c;color:#fff;min-height:1
 .main{padding:2rem;overflow-y:auto;}
 .panel{display:none;}
 .panel.active{display:block;}
-.panel h2{font-size:1.3rem;margin-bottom:1.5rem;color:#e2e8f0;}
+.panel h2{font-size:1.3rem;margin-bottom:0.5rem;color:#e2e8f0;}
+.panel .desc{font-size:0.82rem;color:#64748b;margin-bottom:1.5rem;}
 .field{margin-bottom:1.5rem;}
 .field label{display:block;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#94a3b8;margin-bottom:6px;}
 .field input,.field textarea{width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2d4a6e;background:#0d1f3c;color:#fff;font-size:0.9rem;transition:border 0.2s;}
 .field input:focus,.field textarea:focus{outline:none;border-color:#0ea5e9;}
 .field textarea{height:80px;resize:vertical;}
 .color-row{display:flex;align-items:center;gap:12px;}
-.color-row input[type=color]{width:48px;height:40px;border-radius:6px;border:none;cursor:pointer;padding:2px;background:#0d1f3c;}
+.color-row input[type=color]{width:48px;height:40px;border-radius:6px;border:2px solid #2d4a6e;cursor:pointer;padding:2px;background:#0d1f3c;}
 .color-row input[type=text]{flex:1;}
 .save-btn{background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:12px 32px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
 .save-btn:hover{background:#0284c7;}
-.save-btn:disabled{background:#2d4a6e;cursor:not-allowed;}
 .toast{position:fixed;bottom:2rem;right:2rem;background:#10b981;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;display:none;z-index:9999;}
-.preview-colors{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap;}
-.preview-swatch{width:60px;height:60px;border-radius:8px;border:2px solid #2d4a6e;}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <h1>🔐 Admin Panel</h1>
@@ -57,7 +52,6 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f3c;color:#fff;min-height:1
   </div>
 </div>
 
-<!-- ADMIN -->
 <div class="admin" id="adminPanel">
   <div class="topbar">
     <h1>⚙️ Lavanderia Molino — CMS</h1>
@@ -74,53 +68,76 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f3c;color:#fff;min-height:1
     </div>
     <div class="main">
 
-      <!-- HERO -->
       <div class="panel active" id="panel-hero">
         <h2>🏠 Hero Section</h2>
-        <div class="field"><label>Hero Title (Blue)</label><input id="hero_title" type="text"/></div>
+        <p class="desc">Edit the main hero text shown on the homepage.</p>
+        <div class="field"><label>Hero Title (big blue text)</label><input id="hero_title" type="text"/></div>
         <div class="field"><label>Hero Subtitle</label><input id="hero_subtitle" type="text"/></div>
         <div class="field"><label>Hero Description</label><textarea id="hero_desc"></textarea></div>
         <button class="save-btn" onclick="savePanel(['hero_title','hero_subtitle','hero_desc'])">💾 Save</button>
       </div>
 
-      <!-- COLORS -->
       <div class="panel" id="panel-colors">
         <h2>🎨 Colors</h2>
-        <div class="field"><label>Accent Color (Blue)</label><div class="color-row"><input type="color" id="accent_color_picker" oninput="document.getElementById('accent_color').value=this.value"/><input type="text" id="accent_color"/></div></div>
-        <div class="field"><label>Navy Color</label><div class="color-row"><input type="color" id="navy_color_picker" oninput="document.getElementById('navy_color').value=this.value"/><input type="text" id="navy_color"/></div></div>
-        <div class="field"><label>Background Color</label><div class="color-row"><input type="color" id="bg_color_picker" oninput="document.getElementById('bg_color').value=this.value"/><input type="text" id="bg_color"/></div></div>
-        <div class="field"><label>Card Color</label><div class="color-row"><input type="color" id="card_color_picker" oninput="document.getElementById('card_color').value=this.value"/><input type="text" id="card_color"/></div></div>
-        <button class="save-btn" onclick="savePanel(['accent_color','navy_color','bg_color','card_color'])">💾 Save</button>
+        <p class="desc">Change any color on the site. Click the color box or type a hex code.</p>
+        <div class="field"><label>Background Color (all pages)</label>
+          <div class="color-row"><input type="color" id="bg_color_picker" oninput="sync('bg_color',this.value)"/><input type="text" id="bg_color" oninput="sync('bg_color_picker',this.value)" placeholder="#F5F2E8"/></div>
+        </div>
+        <div class="field"><label>Accent Color (buttons, links, highlights)</label>
+          <div class="color-row"><input type="color" id="accent_color_picker" oninput="sync('accent_color',this.value)"/><input type="text" id="accent_color" oninput="sync('accent_color_picker',this.value)" placeholder="#0ea5e9"/></div>
+        </div>
+        <div class="field"><label>Navbar Background</label>
+          <div class="color-row"><input type="color" id="navbar_color_picker" oninput="sync('navbar_color',this.value)"/><input type="text" id="navbar_color" oninput="sync('navbar_color_picker',this.value)" placeholder="#0d1f3c"/></div>
+        </div>
+        <div class="field"><label>Navy / Dark Elements</label>
+          <div class="color-row"><input type="color" id="navy_color_picker" oninput="sync('navy_color',this.value)"/><input type="text" id="navy_color" oninput="sync('navy_color_picker',this.value)" placeholder="#0d1f3c"/></div>
+        </div>
+        <div class="field"><label>Main Text Color</label>
+          <div class="color-row"><input type="color" id="text_color_picker" oninput="sync('text_color',this.value)"/><input type="text" id="text_color" oninput="sync('text_color_picker',this.value)" placeholder="#1a1f2e"/></div>
+        </div>
+        <div class="field"><label>Secondary Text Color</label>
+          <div class="color-row"><input type="color" id="text_secondary_picker" oninput="sync('text_secondary',this.value)"/><input type="text" id="text_secondary" oninput="sync('text_secondary_picker',this.value)" placeholder="#4a5568"/></div>
+        </div>
+        <div class="field"><label>Muted Text Color</label>
+          <div class="color-row"><input type="color" id="text_muted_picker" oninput="sync('text_muted',this.value)"/><input type="text" id="text_muted" oninput="sync('text_muted_picker',this.value)" placeholder="#8898a6"/></div>
+        </div>
+        <div class="field"><label>Nav Hover Color</label>
+          <div class="color-row"><input type="color" id="nav_hover_color_picker" oninput="sync('nav_hover_color',this.value)"/><input type="text" id="nav_hover_color" oninput="sync('nav_hover_color_picker',this.value)" placeholder="#7dcffc"/></div>
+        </div>
+        <div class="field"><label>Scrollbar Color</label>
+          <div class="color-row"><input type="color" id="scrollbar_color_picker" oninput="sync('scrollbar_color',this.value)"/><input type="text" id="scrollbar_color" oninput="sync('scrollbar_color_picker',this.value)" placeholder="#94a3b8"/></div>
+        </div>
+        <button class="save-btn" onclick="savePanel(['bg_color','accent_color','navbar_color','navy_color','text_color','text_secondary','text_muted','nav_hover_color','scrollbar_color'])">💾 Save All Colors</button>
       </div>
 
-      <!-- SERVICES -->
       <div class="panel" id="panel-services">
-        <h2>🫧 Services Text</h2>
+        <h2>🫧 Services</h2>
+        <p class="desc">Edit services section title.</p>
         <div class="field"><label>Section Title</label><input id="services_title" type="text"/></div>
         <button class="save-btn" onclick="savePanel(['services_title'])">💾 Save</button>
       </div>
 
-      <!-- INFO -->
       <div class="panel" id="panel-info">
         <h2>📍 Info & Hours</h2>
+        <p class="desc">Edit contact information shown on the site.</p>
         <div class="field"><label>Phone</label><input id="phone" type="text"/></div>
         <div class="field"><label>Address</label><input id="address" type="text"/></div>
         <div class="field"><label>Hours</label><input id="hours" type="text"/></div>
         <button class="save-btn" onclick="savePanel(['phone','address','hours'])">💾 Save</button>
       </div>
 
-      <!-- IMAGES -->
       <div class="panel" id="panel-images">
         <h2>🖼️ Hero Images</h2>
+        <p class="desc">Paste Imgur image URLs to change hero photos.</p>
         <div class="field"><label>Image 1 URL</label><input id="hero_img1" type="text"/></div>
         <div class="field"><label>Image 2 URL</label><input id="hero_img2" type="text"/></div>
         <div class="field"><label>Image 3 URL</label><input id="hero_img3" type="text"/></div>
         <button class="save-btn" onclick="savePanel(['hero_img1','hero_img2','hero_img3'])">💾 Save</button>
       </div>
 
-      <!-- PRICES -->
       <div class="panel" id="panel-prices">
         <h2>💶 Prices</h2>
+        <p class="desc">Edit washing and drying prices.</p>
         <div class="field"><label>Price S (euros)</label><input id="price_s" type="text"/></div>
         <div class="field"><label>Price M (euros)</label><input id="price_m" type="text"/></div>
         <div class="field"><label>Price L (euros)</label><input id="price_l" type="text"/></div>
@@ -164,16 +181,22 @@ function showPanel(name) {
   document.getElementById('tab-' + name).classList.add('active');
 }
 
+function sync(targetId, value) {
+  const el = document.getElementById(targetId);
+  if(el) el.value = value;
+}
+
 async function loadAll() {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?select=key,value`, {
     headers: {'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY}
   });
   const data = await res.json();
+  if(!Array.isArray(data)) return;
   data.forEach(row => {
     const el = document.getElementById(row.key);
     if(el) el.value = row.value || '';
     const picker = document.getElementById(row.key + '_picker');
-    if(picker) picker.value = row.value || '#000000';
+    if(picker && row.value && row.value.startsWith('#')) picker.value = row.value;
   });
 }
 
@@ -181,7 +204,6 @@ async function savePanel(keys) {
   for(const key of keys) {
     const el = document.getElementById(key);
     if(!el) continue;
-    const value = el.value;
     await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?key=eq.${key}`, {
       method: 'PATCH',
       headers: {
@@ -190,7 +212,7 @@ async function savePanel(keys) {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({value})
+      body: JSON.stringify({value: el.value})
     });
   }
   const toast = document.getElementById('toast');
