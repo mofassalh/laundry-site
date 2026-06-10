@@ -189,3 +189,92 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+/* ============================================================
+   CMS — Load settings from Supabase
+   ============================================================ */
+(async function loadCMS() {
+  const URL = 'https://oibcsltumepcfuqggtlo.supabase.co';
+  const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYmNzbHR1bWVwY2Z1cWdndGxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MjAwMDAwMDAwMH0.WdxkWxnXJXo';
+
+  try {
+    const res = await fetch(URL + '/rest/v1/Laundry?select=key,value', {
+      headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY }
+    });
+    const rows = await res.json();
+    if (!Array.isArray(rows)) return;
+
+    const s = {};
+    rows.forEach(r => { s[r.key] = r.value; });
+
+    // Colors
+    const root = document.documentElement;
+    if (s.accent_color) root.style.setProperty('--sky-500', s.accent_color);
+    if (s.navy_color)   root.style.setProperty('--charcoal', s.navy_color);
+    if (s.bg_color)     root.style.setProperty('--white', s.bg_color);
+    if (s.bg_color)     document.body.style.background = s.bg_color;
+
+    // Hero title
+    if (s.hero_title) {
+      document.querySelectorAll('.hero-title, [data-cms="hero_title"]').forEach(el => {
+        el.textContent = s.hero_title;
+      });
+    }
+    // Hero subtitle
+    if (s.hero_subtitle) {
+      document.querySelectorAll('.hero-subtitle, [data-cms="hero_subtitle"]').forEach(el => {
+        el.textContent = s.hero_subtitle;
+      });
+    }
+    // Hero desc
+    if (s.hero_desc) {
+      document.querySelectorAll('.hero-desc, [data-cms="hero_desc"]').forEach(el => {
+        el.textContent = s.hero_desc;
+      });
+    }
+    // Phone
+    if (s.phone) {
+      document.querySelectorAll('[data-cms="phone"]').forEach(el => {
+        el.textContent = s.phone;
+        if (el.tagName === 'A') el.href = 'tel:' + s.phone.replace(/\s/g,'');
+      });
+    }
+    // Hours
+    if (s.hours) {
+      document.querySelectorAll('[data-cms="hours"]').forEach(el => {
+        el.textContent = s.hours;
+      });
+    }
+    // Address
+    if (s.address) {
+      document.querySelectorAll('[data-cms="address"]').forEach(el => {
+        el.textContent = s.address;
+      });
+    }
+    // Hero images
+    if (s.hero_img1) {
+      document.querySelectorAll('[data-cms="hero_img1"]').forEach(el => el.src = s.hero_img1);
+    }
+    if (s.hero_img2) {
+      document.querySelectorAll('[data-cms="hero_img2"]').forEach(el => el.src = s.hero_img2);
+    }
+    if (s.hero_img3) {
+      document.querySelectorAll('[data-cms="hero_img3"]').forEach(el => el.src = s.hero_img3);
+    }
+    // Prices
+    if (s.price_s) document.querySelectorAll('[data-cms="price_s"]').forEach(el => el.textContent = s.price_s + ' EUR');
+    if (s.price_m) document.querySelectorAll('[data-cms="price_m"]').forEach(el => el.textContent = s.price_m + ' EUR');
+    if (s.price_l) document.querySelectorAll('[data-cms="price_l"]').forEach(el => el.textContent = s.price_l + ' EUR');
+    if (s.price_xl) document.querySelectorAll('[data-cms="price_xl"]').forEach(el => el.textContent = s.price_xl + ' EUR');
+    if (s.price_dryer) document.querySelectorAll('[data-cms="price_dryer"]').forEach(el => el.textContent = s.price_dryer + ' EUR');
+
+    // Background color all sections
+    if (s.bg_color) {
+      document.querySelectorAll('section, .stats-strip, .services-section, footer').forEach(el => {
+        el.style.background = s.bg_color;
+      });
+    }
+
+  } catch(e) {
+    console.log('CMS load failed:', e);
+  }
+})();
