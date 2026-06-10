@@ -637,3 +637,12 @@ body.lang-en span[data-es] { display: none; }
   .bottom-nav { display: block; }
   body { padding-bottom: 72px; }
 }
+
+/* Mobile: hide hamburger, show lang switcher */
+@media (max-width: 768px) {
+  .nav-hamburger { display: none !important; }
+  #mobileMenu { display: none !important; }
+  .nav-links { display: none !important; }
+  .lang-switcher { display: flex !important; }
+  .nav-cta { display: none !important; }
+}
