@@ -91,22 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ob.observe(el);
   });
 
-  /* ── Cursor glow (desktop only) ── */
-  if (window.innerWidth > 768) {
-    const glow = document.createElement('div');
-    glow.id = 'cursor-glow';
-    document.body.appendChild(glow);
-    let glowX = 0, glowY = 0, curX = 0, curY = 0;
-    window.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
-    (function animateGlow() {
-      glowX += (curX - glowX) * 0.08;
-      glowY += (curY - glowY) * 0.08;
-      glow.style.left = glowX + 'px';
-      glow.style.top  = glowY + 'px';
-      requestAnimationFrame(animateGlow);
-    })();
-  }
-
   /* ── Parallax hero images ── */
   const parallaxImgs = document.querySelectorAll('.parallax-img');
   if (parallaxImgs.length) {
