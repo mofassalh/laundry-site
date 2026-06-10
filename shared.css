@@ -729,3 +729,15 @@ body.lang-en .btn-text-en { display: inline !important; }
 .btn-primary, .btn-primary span, .btn-primary * {
   color: white !important;
 }
+
+/* Fix WhatsApp float button */
+#wa-float {
+  background: #25d366 !important;
+  color: white !important;
+}
+#wa-float svg {
+  fill: white !important;
+}
+#wa-float .wa-pulse {
+  background: #25d366 !important;
+}
