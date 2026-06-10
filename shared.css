@@ -688,3 +688,12 @@ body.lang-en span[data-es] { display: none; }
     margin-top: -1px !important;
   }
 }
+
+/* WhatsApp float - proper position */
+#wa-float {
+  position: fixed !important;
+  bottom: 90px !important;
+  right: 20px !important;
+  top: auto !important;
+  z-index: 9999 !important;
+}
