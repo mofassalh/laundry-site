@@ -292,7 +292,7 @@ body.lang-en span[data-es] { display: none; }
 
 /* ─── Page Hero (non-home pages) ─── */
 .page-hero {
-  min-height: 38vh;
+  min-height: 20vh;
   background: var(--white);
   display: flex; align-items: center; justify-content: center;
   padding: 120px 5vw 60px;
