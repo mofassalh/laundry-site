@@ -209,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (s.scrollbar_color) css += '--scrollbar:' + s.scrollbar_color + ';';
     if (s.scrollbar_color) css += '::-webkit-scrollbar-thumb { background:' + s.scrollbar_color + ' !important; }';
     if (s.footer_color) css += 'footer, .footer, #footer { background:' + s.footer_color + ' !important; }';
+    if (s.bottom_nav_bg) css += '.bottom-nav { background:' + s.bottom_nav_bg + ' !important; }';
+    if (s.bottom_nav_active) css += '.bottom-nav a.active { color:' + s.bottom_nav_active + ' !important; } .bottom-nav a.active svg { stroke:' + s.bottom_nav_active + ' !important; }';
     style.textContent = css;
     head.appendChild(style);
 

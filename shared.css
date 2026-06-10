@@ -612,3 +612,28 @@ body.lang-en span[data-es] { display: none; }
   z-index: 9999;
   transition: width 0.1s linear;
 }
+/* ─── Bottom Navigation (Mobile) ─── */
+.bottom-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--white);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 8px 0 12px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+}
+.bottom-nav-inner {
+  display: flex; justify-content: space-around; align-items: center;
+}
+.bottom-nav a {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  text-decoration: none; color: #8898a6;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.05em;
+  text-transform: uppercase; transition: color 0.2s; padding: 4px 8px;
+}
+.bottom-nav a svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.bottom-nav a.active { color: var(--sky-500); }
+.bottom-nav a.active svg { stroke: var(--sky-500); }
+@media (max-width: 768px) {
+  .bottom-nav { display: block; }
+  body { padding-bottom: 72px; }
+}
