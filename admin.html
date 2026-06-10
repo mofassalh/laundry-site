@@ -107,7 +107,10 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f3c;color:#fff;min-height:1
         <div class="field"><label>Scrollbar Color</label>
           <div class="color-row"><input type="color" id="scrollbar_color_picker" oninput="sync('scrollbar_color',this.value)"/><input type="text" id="scrollbar_color" oninput="sync('scrollbar_color_picker',this.value)" placeholder="#94a3b8"/></div>
         </div>
-        <button class="save-btn" onclick="savePanel(['bg_color','accent_color','navbar_color','navy_color','text_color','text_secondary','text_muted','nav_hover_color','scrollbar_color'])">💾 Save All Colors</button>
+        <div class="field"><label>Footer Background</label>
+          <div class="color-row"><input type="color" id="footer_color_picker" oninput="sync('footer_color',this.value)"/><input type="text" id="footer_color" oninput="sync('footer_color_picker',this.value)" placeholder="#0d1f3c"/></div>
+        </div>
+        <button class="save-btn" onclick="savePanel(['bg_color','accent_color','navbar_color','navy_color','text_color','text_secondary','text_muted','nav_hover_color','scrollbar_color','footer_color'])">💾 Save All Colors</button>
       </div>
 
       <div class="panel" id="panel-services">
