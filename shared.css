@@ -759,3 +759,12 @@ body.lang-en .btn-text-en { display: inline !important; }
 .wa-pulse {
   display: none !important;
 }
+
+/* WhatsApp - always fixed bottom right above bottom nav */
+#wa-float {
+  position: fixed !important;
+  bottom: 80px !important;
+  right: 16px !important;
+  top: unset !important;
+  left: unset !important;
+}
