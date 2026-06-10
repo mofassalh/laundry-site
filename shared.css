@@ -652,3 +652,9 @@ body.lang-en span[data-es] { display: none; }
   .nav-logo { font-size: 1.2rem !important; white-space: nowrap; }
   #navbar { padding: 12px 4vw !important; }
 }
+
+/* WhatsApp float above bottom nav */
+.whatsapp-float, .wa-float, #whatsapp-float {
+  z-index: 9999 !important;
+  bottom: 80px !important;
+}
