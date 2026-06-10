@@ -663,3 +663,6 @@ body.lang-en span[data-es] { display: none; }
 .hero-caption, .slide-caption, .image-caption, figcaption {
   display: none !important;
 }
+
+/* Hide video label/caption */
+#videoLabel { display: none !important; }
