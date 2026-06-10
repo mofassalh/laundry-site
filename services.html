@@ -32,13 +32,21 @@ body { background: var(--bg); }
 .nav-cta { background: var(--navy) !important; color: white !important; }
 
 /* Page Hero */
-
+.page-hero {
+  padding: 140px 5vw 80px;
+  background: var(--card);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
 .page-hero-eyebrow {
   font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 16px;
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
-
+.page-hero-eyebrow::before, .page-hero-eyebrow::after {
+  content: ""; display: block; width: 20px; height: 1px; background: var(--accent);
+}
 .page-hero-title {
   font-family: "Bodoni Moda", serif;
   font-size: clamp(2.4rem, 4vw, 4.5rem);
