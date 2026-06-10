@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
    ============================================================ */
 (async function loadCMS() {
   const SURL = 'https://oibcsltumepcfuqggtlo.supabase.co';
-  const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYmNzbHR1bWVwY2Z1cWdndGxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MjAwMDAwMDAwMH0.WdxkWxnXJXo';
+  const SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pYmNzbHR1bWVwY2Z1cWdndGxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5MTA3NTMsImV4cCI6MjA5NjQ4Njc1M30.lPsfiS1jHqXUDS9ROaM4R1F_V--q2lyLWdxkWxnXJXo';
   try {
     const res = await fetch(SURL + '/rest/v1/Laundry?select=key,value', {
       headers: { 'apikey': SKEY, 'Authorization': 'Bearer ' + SKEY }
