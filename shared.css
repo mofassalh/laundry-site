@@ -462,18 +462,7 @@ body.lang-en span[data-es] { display: none; }
 }
 .img-zoom:hover img { transform: scale(1.06); }
 
-/* ─── Cursor glow (desktop only) ─── */
-#cursor-glow {
-  pointer-events: none;
-  position: fixed; z-index: 9999;
-  width: 320px; height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(14,165,233,0.07) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: opacity 0.4s ease;
-  will-change: transform;
-}
-@media (max-width: 768px) { #cursor-glow { display: none; } }
+
 /* ============================================================
    PREMIUM ANIMATIONS v2
    ============================================================ */
