@@ -612,13 +612,56 @@ body.lang-en [data-es] { display: none !important; }
     <p class="section-desc" style="text-align:center;margin:0 auto;">⭐ 4.9 · 276 <span data-es>reseñas en Google</span><span data-en>Google reviews</span></p>
   </div>
   <div class="testimonials-track-wrap">
-    <div class="testimonials-track">
-<div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"I really love this place! Machines are new and chemicals are really good for fabric. Very clean and smells good!"</div><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sumaiya Mahdamy</div><div class="testi-loc">Local Guide · Barcelona</div></div>
-<div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"So helpful when on holiday! I did all my washing for the price my hotel wanted for one pair of trousers!"</div><div class="testi-author"><div class="testi-avatar">E</div><div><div class="testi-name">Ellena Parsons</div><div class="testi-loc">Local Guide · Barcelona</div></div>
-<div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"Machines were clean and easy to operate. Prices very reasonable. The owner was very friendly!"</div><div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Joshua Indrawan Tjoe</div><div class="testi-loc">Barcelona</div></div>
-</div>
-</div>
+    <div class="testimonials-track" id="reviewsTrack">
+    </div>
+  </div>
 </section>
+
+<script>
+const allReviews = [
+  { text: "I really love this place! Machines are new and chemicals are really good for fabric. Very clean and smells good!", name: "Sumaiya Mahdamy", loc: "Local Guide · Barcelona" },
+  { text: "So helpful when on holiday! I did all my washing for the price my hotel wanted for one pair of trousers!", name: "Ellena Parsons", loc: "Local Guide · Barcelona" },
+  { text: "Machines were clean and easy to operate. Prices very reasonable. The owner was very friendly!", name: "Joshua Indrawan Tjoe", loc: "Barcelona" },
+  { text: "Superb place to do your laundry - cheap, plenty of washing machines and driers, and helpful and attentive owners. Couldn't recommend more!", name: "Neill Higgins", loc: "Barcelona" },
+  { text: "Clean, ultramodern, pleasant staff everything is very well run highly recommend", name: "Steven Savoury", loc: "Local Guide · Barcelona" },
+  { text: "Extremely clean and easy to use laundromat. Has automatic washing detergent added so no need to bring your own. Also very reasonably priced.", name: "Ben Giobbi", loc: "Barcelona" },
+  { text: "The owner is very kind. The washing machines and dryers are very well maintained. Highly recommended!", name: "Jooyoung", loc: "Barcelona" },
+  { text: "Best price best place for your laundry. Always clean, well maintained and safest I have found in my district.", name: "Simon Fernandez", loc: "Local Guide · Barcelona" },
+  { text: "Very clean laundromat with very clear instructions. The whole experience was smooth and the owner was very kind.", name: "Madison Hurr", loc: "Local Guide · Barcelona" },
+  { text: "Affordable fast and awesome. Cleaning and quality close to cruise terminal and soap is included!", name: "Christie James", loc: "Local Guide · Barcelona" },
+  { text: "The owner was really helpful even though he does not speak English fluently. Great laundromat with good reviews!", name: "Devvon J Victor", loc: "Local Guide · Barcelona" },
+  { text: "Excellent service. The owner was super friendly, helpful and flexible in closing time. Recommend to everyone!", name: "Beatrice Ciacci", loc: "Barcelona" },
+];
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function renderReviews() {
+  const track = document.getElementById("reviewsTrack");
+  if (!track) return;
+  const selected = shuffle([...allReviews]).slice(0, 3);
+  track.innerHTML = selected.map(r => `
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"${r.text}"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">${r.name.charAt(0)}</div>
+        <div>
+          <div class="testi-name">${r.name}</div>
+          <div class="testi-loc">${r.loc}</div>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+document.addEventListener("DOMContentLoaded", renderReviews);
+</script>
 
 
 
